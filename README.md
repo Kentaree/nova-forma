@@ -28,13 +28,13 @@ npm run lint
 
 ```
 src/
-  app/          screens (Expo Router): (tabs)/ for Workout, Exercises, Settings; session/[id] for a live workout
+  app/          screens (Expo Router): (tabs)/ for Workout, History, Exercises, Settings; session/[id] for a live workout
   components/   shared UI
   data/         bundled exercise library (exercises.json)
   db/           Db interface, expo-sqlite adapter, migrations, library seeding
-  domain/       pure logic: types, units, 1RM, set pre-fill, rest timer, formatting
+  domain/       pure logic: types, units, 1RM, records, set pre-fill, rest timer, formatting
   repo/         data access, written against the Db interface
-  lib/          platform glue: rest-over notifications, confirm prompts
+  lib/          platform glue: rest-over notifications, confirm prompts, CSV export
   test/         node:sqlite Db for tests
 scripts/
   port-smart-fitness-seed.js   regenerates src/data/exercises.json from the old smart-fitness seed

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ScrollView, View } from 'react-native';
+import { Alert, ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Button, Card, Screen, Segmented, T } from '@/components/ui';
@@ -7,6 +7,7 @@ import { Spacing } from '@/constants/theme';
 import type { WeightUnit } from '@/domain/types';
 import { useDb } from '@/hooks/use-db';
 import { useQuery } from '@/hooks/use-query';
+import { shareWorkoutsCsv } from '@/lib/export';
 import { getSettings, saveSettings, type Settings } from '@/repo/settings';
 
 const REST_STEP = 15;
@@ -15,6 +16,7 @@ export default function SettingsScreen() {
   const db = useDb();
   const { data } = useQuery(() => getSettings(db));
   // Changes show immediately; the database write happens in the background.
+  const [exporting, setExporting] = useState(false);
   const [edits, setEdits] = useState<Partial<Settings>>({});
   const settings: Settings | undefined = data && { ...data, ...edits };
 
@@ -63,6 +65,28 @@ export default function SettingsScreen() {
                     />
                   </View>
                 </View>
+              </Card>
+              <Card>
+                <T variant="heading">Your data</T>
+                <T variant="secondary">
+                  Everything is stored on this phone. Export a CSV of all your workouts to keep a backup or open it
+                  in a spreadsheet.
+                </T>
+                <Button
+                  kind="secondary"
+                  label={exporting ? 'Exporting…' : 'Export workouts (CSV)'}
+                  disabled={exporting}
+                  onPress={async () => {
+                    setExporting(true);
+                    try {
+                      await shareWorkoutsCsv(db);
+                    } catch (e) {
+                      Alert.alert('Export failed', (e as Error).message);
+                    } finally {
+                      setExporting(false);
+                    }
+                  }}
+                />
               </Card>
             </>
           )}
