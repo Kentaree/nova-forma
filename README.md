@@ -28,7 +28,7 @@ npm run lint
 
 ```
 src/
-  app/          screens (Expo Router): (tabs)/ for Workout, History, Exercises, Settings; session/[id] for a live workout
+  app/          screens (Expo Router): (tabs)/ for Workout, History, Exercises, Settings; session/[id] for a live workout; template/[id] to edit a template
   components/   shared UI
   data/         bundled exercise library (exercises.json)
   db/           Db interface, expo-sqlite adapter, migrations, library seeding

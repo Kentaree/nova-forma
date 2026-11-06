@@ -42,6 +42,8 @@ export default function RootLayout() {
                 options={{ title: 'Workout', presentation: 'fullScreenModal', gestureEnabled: false }}
               />
               <Stack.Screen name="session/[id]/add" options={{ title: 'Add exercise', presentation: 'modal' }} />
+              <Stack.Screen name="template/[id]/index" options={{ title: 'Template' }} />
+              <Stack.Screen name="template/[id]/add" options={{ title: 'Add exercise', presentation: 'modal' }} />
             </Stack>
           </RestTimerProvider>
         </SQLiteProvider>
