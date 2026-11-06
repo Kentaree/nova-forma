@@ -15,3 +15,19 @@ export interface Exercise {
   isCustom: boolean;
   archived: boolean;
 }
+
+/** The measurable values of one logged set. Which fields are used depends on the exercise's LogType. */
+export interface SetValues {
+  weightKg: number | null;
+  reps: number | null;
+  durationS: number | null;
+  distanceM: number | null;
+}
+
+export interface LoggedSet extends SetValues {
+  id: string;
+  position: number;
+  setType: SetType;
+  rpe: number | null;
+  completedAt: string;
+}

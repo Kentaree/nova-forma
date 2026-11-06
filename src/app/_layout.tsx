@@ -1,10 +1,10 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from 'expo-router';
+import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from 'expo-router';
 import { SQLiteProvider, type SQLiteDatabase } from 'expo-sqlite';
 import { StatusBar } from 'expo-status-bar';
 import { Suspense } from 'react';
 import { ActivityIndicator, useColorScheme, View } from 'react-native';
 
-import AppTabs from '@/components/app-tabs';
+import { RestTimerProvider } from '@/components/rest-timer';
 import { Colors } from '@/constants/theme';
 import { fromExpo } from '@/db/expo';
 import { initDatabase } from '@/db/init';
@@ -34,7 +34,16 @@ export default function RootLayout() {
           </View>
         }>
         <SQLiteProvider databaseName={DATABASE_NAME} onInit={onInit} useSuspense>
-          <AppTabs />
+          <RestTimerProvider>
+            <Stack>
+              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+              <Stack.Screen
+                name="session/[id]/index"
+                options={{ title: 'Workout', presentation: 'fullScreenModal', gestureEnabled: false }}
+              />
+              <Stack.Screen name="session/[id]/add" options={{ title: 'Add exercise', presentation: 'modal' }} />
+            </Stack>
+          </RestTimerProvider>
         </SQLiteProvider>
       </Suspense>
     </ThemeProvider>

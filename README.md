@@ -14,7 +14,7 @@ npm install
 npx expo start
 ```
 
-Then open it on your phone. `expo-sqlite` ships inside Expo Go, so Expo Go works for now. Once the app needs native modules Expo Go lacks, use a development build (`npx eas-cli build --profile development`).
+Then open it on your phone, or press `w` for a quick preview in a web browser (menus that use native alerts don't work there). `expo-sqlite` ships inside Expo Go, so Expo Go works for now. Once the app needs native modules Expo Go lacks, use a development build (`npx eas-cli build --profile development`).
 
 ## Checks
 
@@ -28,12 +28,13 @@ npm run lint
 
 ```
 src/
-  app/          screens (Expo Router: Workout, Exercises, Settings tabs)
+  app/          screens (Expo Router): (tabs)/ for Workout, Exercises, Settings; session/[id] for a live workout
   components/   shared UI
   data/         bundled exercise library (exercises.json)
   db/           Db interface, expo-sqlite adapter, migrations, library seeding
-  domain/       pure logic: types, units, 1RM estimates
+  domain/       pure logic: types, units, 1RM, set pre-fill, rest timer, formatting
   repo/         data access, written against the Db interface
+  lib/          platform glue: rest-over notifications, confirm prompts
   test/         node:sqlite Db for tests
 scripts/
   port-smart-fitness-seed.js   regenerates src/data/exercises.json from the old smart-fitness seed

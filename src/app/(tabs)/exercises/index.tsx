@@ -16,7 +16,7 @@ export default function ExerciseLibrary() {
   const [search, setSearch] = useState('');
   const [muscle, setMuscle] = useState<string | undefined>();
   const { data: muscles } = useQuery(() => listMuscles(db));
-  const { data: exercises } = useQuery(() => listExercises(db, { search, muscle }));
+  const { data: exercises } = useQuery(() => listExercises(db, { search, muscle }), `${search}|${muscle ?? ""}`);
 
   return (
     <Screen>

@@ -14,7 +14,7 @@ const EQUIPMENT_NAMES = Object.fromEntries(library.equipment.map((e) => [e.id, e
 export default function ExerciseDetail() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const db = useDb();
-  const { data: ex } = useQuery(() => getExercise(db, id));
+  const { data: ex } = useQuery(() => getExercise(db, id), id);
 
   if (ex === undefined) return <Screen />;
   if (ex === null)
