@@ -1,0 +1,2634 @@
+{
+  "equipment": [
+    {
+      "id": "none",
+      "name": "None (Bodyweight)",
+      "category": "bodyweight"
+    },
+    {
+      "id": "dumbbells",
+      "name": "Dumbbells",
+      "category": "strength"
+    },
+    {
+      "id": "barbell",
+      "name": "Barbell",
+      "category": "strength"
+    },
+    {
+      "id": "weight-plates",
+      "name": "Weight Plates",
+      "category": "strength"
+    },
+    {
+      "id": "resistance-bands",
+      "name": "Resistance Bands",
+      "category": "strength"
+    },
+    {
+      "id": "pull-up-bar",
+      "name": "Pull-up Bar",
+      "category": "strength"
+    },
+    {
+      "id": "kettlebell",
+      "name": "Kettlebell",
+      "category": "strength"
+    },
+    {
+      "id": "treadmill",
+      "name": "Treadmill",
+      "category": "cardio"
+    },
+    {
+      "id": "stationary-bike",
+      "name": "Stationary Bike",
+      "category": "cardio"
+    },
+    {
+      "id": "rowing-machine",
+      "name": "Rowing Machine",
+      "category": "cardio"
+    },
+    {
+      "id": "elliptical",
+      "name": "Elliptical",
+      "category": "cardio"
+    },
+    {
+      "id": "jump-rope",
+      "name": "Jump Rope",
+      "category": "cardio"
+    },
+    {
+      "id": "bench",
+      "name": "Bench",
+      "category": "strength"
+    },
+    {
+      "id": "squat-rack",
+      "name": "Squat Rack",
+      "category": "strength"
+    },
+    {
+      "id": "cable-machine",
+      "name": "Cable Machine",
+      "category": "strength"
+    },
+    {
+      "id": "smith-machine",
+      "name": "Smith Machine",
+      "category": "strength"
+    },
+    {
+      "id": "yoga-mat",
+      "name": "Yoga Mat",
+      "category": "flexibility"
+    },
+    {
+      "id": "foam-roller",
+      "name": "Foam Roller",
+      "category": "flexibility"
+    },
+    {
+      "id": "yoga-blocks",
+      "name": "Yoga Blocks",
+      "category": "flexibility"
+    },
+    {
+      "id": "medicine-ball",
+      "name": "Medicine Ball",
+      "category": "strength"
+    },
+    {
+      "id": "balance-ball",
+      "name": "Balance Ball",
+      "category": "strength"
+    },
+    {
+      "id": "trx-straps",
+      "name": "TRX Straps",
+      "category": "strength"
+    },
+    {
+      "id": "parallette-bars",
+      "name": "Parallette Bars",
+      "category": "strength"
+    },
+    {
+      "id": "ab-roller",
+      "name": "Ab Roller",
+      "category": "strength"
+    },
+    {
+      "id": "aerobic-stepper",
+      "name": "Aerobic Stepper",
+      "category": "cardio"
+    },
+    {
+      "id": "resistance-loop-bands",
+      "name": "Resistance Loop Bands",
+      "category": "strength"
+    },
+    {
+      "id": "push-up-bars",
+      "name": "Push-up Bars",
+      "category": "strength"
+    },
+    {
+      "id": "door-anchor",
+      "name": "Door Anchor",
+      "category": "strength"
+    },
+    {
+      "id": "weighted-vest",
+      "name": "Weighted Vest",
+      "category": "strength"
+    },
+    {
+      "id": "sliders",
+      "name": "Sliders",
+      "category": "strength"
+    },
+    {
+      "id": "ab-mat",
+      "name": "Ab Mat",
+      "category": "strength"
+    },
+    {
+      "id": "massage-ball",
+      "name": "Massage Ball",
+      "category": "flexibility"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "push-ups",
+      "name": "Push-ups",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "chest",
+        "triceps",
+        "shoulders"
+      ],
+      "secondaryMuscles": [
+        "core"
+      ],
+      "instructions": [
+        "Start in plank position with hands slightly wider than shoulders",
+        "Lower your body until chest nearly touches the floor",
+        "Push back up to starting position",
+        "Keep your body in a straight line throughout"
+      ],
+      "description": "Classic bodyweight chest exercise",
+      "difficulty": "beginner",
+      "equipment": []
+    },
+    {
+      "id": "bodyweight-squats",
+      "name": "Bodyweight Squats",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondaryMuscles": [
+        "hamstrings",
+        "calves",
+        "core"
+      ],
+      "instructions": [
+        "Stand with feet shoulder-width apart",
+        "Lower your body by bending knees and pushing hips back",
+        "Go down until thighs are parallel to floor",
+        "Push through heels to return to standing"
+      ],
+      "description": "Fundamental lower body bodyweight exercise",
+      "difficulty": "beginner",
+      "equipment": []
+    },
+    {
+      "id": "pull-ups",
+      "name": "Pull-ups",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "lats",
+        "rhomboids"
+      ],
+      "secondaryMuscles": [
+        "biceps",
+        "rear delts"
+      ],
+      "instructions": [
+        "Hang from pull-up bar with overhand grip",
+        "Pull your body up until chin is over the bar",
+        "Lower yourself down with control",
+        "Keep core engaged throughout"
+      ],
+      "description": "Upper body pulling exercise",
+      "difficulty": "intermediate",
+      "equipment": [
+        "pull-up-bar"
+      ]
+    },
+    {
+      "id": "plank",
+      "name": "Plank",
+      "category": "strength",
+      "logType": "time",
+      "primaryMuscles": [
+        "core",
+        "abs"
+      ],
+      "secondaryMuscles": [
+        "shoulders",
+        "glutes"
+      ],
+      "instructions": [
+        "Start in forearm plank position",
+        "Keep body in straight line from head to heels",
+        "Engage core and hold position",
+        "Breathe normally while holding"
+      ],
+      "description": "Isometric core strengthening exercise",
+      "difficulty": "beginner",
+      "equipment": []
+    },
+    {
+      "id": "lunges",
+      "name": "Lunges",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondaryMuscles": [
+        "hamstrings",
+        "calves"
+      ],
+      "instructions": [
+        "Stand with feet together",
+        "Step forward and lower hips",
+        "Front knee should be at 90 degrees",
+        "Push back to starting position"
+      ],
+      "description": "Unilateral lower body exercise",
+      "difficulty": "beginner",
+      "equipment": []
+    },
+    {
+      "id": "mountain-climbers",
+      "name": "Mountain Climbers",
+      "category": "cardio",
+      "logType": "time",
+      "primaryMuscles": [
+        "core",
+        "chest",
+        "cardiovascular system"
+      ],
+      "secondaryMuscles": [
+        "legs",
+        "shoulders"
+      ],
+      "instructions": [
+        "Start in plank position",
+        "Alternate driving knees toward chest",
+        "Keep hips level and core engaged",
+        "Move quickly in a controlled manner"
+      ],
+      "description": "Dynamic full-body cardio exercise",
+      "difficulty": "intermediate",
+      "equipment": []
+    },
+    {
+      "id": "burpees",
+      "name": "Burpees",
+      "category": "cardio",
+      "logType": "reps",
+      "primaryMuscles": [
+        "chest",
+        "legs",
+        "cardiovascular system"
+      ],
+      "secondaryMuscles": [
+        "core",
+        "arms"
+      ],
+      "instructions": [
+        "Start standing with feet shoulder-width apart",
+        "Squat down and place hands on floor",
+        "Jump back to plank position",
+        "Jump feet back to squat and jump up"
+      ],
+      "description": "Full-body cardio and strength exercise",
+      "difficulty": "advanced",
+      "equipment": []
+    },
+    {
+      "id": "dips",
+      "name": "Dips",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "triceps",
+        "chest"
+      ],
+      "secondaryMuscles": [
+        "shoulders",
+        "core"
+      ],
+      "instructions": [
+        "Use parallel bars or dip station",
+        "Lower body by bending elbows",
+        "Go down until elbows are at 90 degrees",
+        "Push back up to starting position"
+      ],
+      "description": "Bodyweight upper body exercise using parallel bars or bench",
+      "difficulty": "intermediate",
+      "equipment": []
+    },
+    {
+      "id": "glute-bridges",
+      "name": "Glute Bridges",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "glutes"
+      ],
+      "secondaryMuscles": [
+        "hamstrings",
+        "core",
+        "lower back"
+      ],
+      "instructions": [
+        "Lie on back with knees bent and feet flat",
+        "Push through heels and lift hips up",
+        "Squeeze glutes at the top",
+        "Lower back down with control"
+      ],
+      "description": "Lower body hip extension exercise",
+      "difficulty": "beginner",
+      "equipment": []
+    },
+    {
+      "id": "leg-raises",
+      "name": "Leg Raises",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "core",
+        "abs"
+      ],
+      "secondaryMuscles": [
+        "hip flexors"
+      ],
+      "instructions": [
+        "Lie on back with legs extended",
+        "Keep legs straight and raise to 90 degrees",
+        "Lower legs without touching floor",
+        "Repeat for desired reps"
+      ],
+      "description": "Core strengthening exercise",
+      "difficulty": "intermediate",
+      "equipment": []
+    },
+    {
+      "id": "handstand-hold",
+      "name": "Handstand Hold",
+      "category": "strength",
+      "logType": "time",
+      "primaryMuscles": [
+        "shoulders",
+        "core"
+      ],
+      "secondaryMuscles": [
+        "triceps",
+        "back"
+      ],
+      "instructions": [
+        "Position hands shoulder-width apart",
+        "Kick legs up into handstand position",
+        "Keep body straight and core tight",
+        "Hold for desired duration"
+      ],
+      "description": "Advanced bodyweight shoulder and core exercise",
+      "difficulty": "advanced",
+      "equipment": []
+    },
+    {
+      "id": "push-up-variations",
+      "name": "Push-up Variations",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "chest",
+        "triceps"
+      ],
+      "secondaryMuscles": [
+        "shoulders",
+        "core"
+      ],
+      "instructions": [
+        "Choose variation: diamond, wide grip, or explosive",
+        "Maintain proper form throughout",
+        "Control the descent and ascent",
+        "Adjust difficulty as needed"
+      ],
+      "description": "Advanced push-up variations",
+      "difficulty": "intermediate",
+      "equipment": []
+    },
+    {
+      "id": "jumping-jacks",
+      "name": "Jumping Jacks",
+      "category": "cardio",
+      "logType": "time",
+      "primaryMuscles": [
+        "legs",
+        "cardiovascular system"
+      ],
+      "secondaryMuscles": [
+        "shoulders",
+        "core"
+      ],
+      "instructions": [
+        "Start standing with feet together",
+        "Jump while spreading feet and raising arms",
+        "Jump back to starting position",
+        "Maintain steady rhythm"
+      ],
+      "description": "Full-body cardio exercise",
+      "difficulty": "beginner",
+      "equipment": []
+    },
+    {
+      "id": "high-knees",
+      "name": "High Knees",
+      "category": "cardio",
+      "logType": "time",
+      "primaryMuscles": [
+        "legs",
+        "cardiovascular system"
+      ],
+      "secondaryMuscles": [
+        "core",
+        "hip flexors"
+      ],
+      "instructions": [
+        "Run in place while lifting knees to chest height",
+        "Move arms in running motion",
+        "Maintain high intensity",
+        "Keep core engaged"
+      ],
+      "description": "Cardio exercise focusing on leg elevation",
+      "difficulty": "intermediate",
+      "equipment": []
+    },
+    {
+      "id": "dumbbell-bench-press",
+      "name": "Dumbbell Bench Press",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "chest",
+        "triceps"
+      ],
+      "secondaryMuscles": [
+        "front delts"
+      ],
+      "instructions": [
+        "Lie on bench with dumbbell in each hand",
+        "Press dumbbells up from chest level",
+        "Lower with control to chest level",
+        "Keep core engaged and feet planted"
+      ],
+      "description": "Chest exercise using dumbbells",
+      "difficulty": "beginner",
+      "equipment": [
+        "dumbbells",
+        "bench"
+      ]
+    },
+    {
+      "id": "dumbbell-rows",
+      "name": "Dumbbell Rows",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "lats",
+        "rhomboids"
+      ],
+      "secondaryMuscles": [
+        "biceps",
+        "rear delts"
+      ],
+      "instructions": [
+        "Bend over with dumbbell in each hand",
+        "Pull dumbbells to your ribs",
+        "Squeeze shoulder blades together",
+        "Lower with control"
+      ],
+      "description": "Back exercise using dumbbells",
+      "difficulty": "beginner",
+      "equipment": [
+        "dumbbells"
+      ]
+    },
+    {
+      "id": "dumbbell-squats",
+      "name": "Dumbbell Squats",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondaryMuscles": [
+        "hamstrings",
+        "calves"
+      ],
+      "instructions": [
+        "Hold dumbbells at shoulders or sides",
+        "Perform squat movement",
+        "Keep chest up and knees tracking over toes",
+        "Drive through heels to stand"
+      ],
+      "description": "Lower body exercise with added weight",
+      "difficulty": "beginner",
+      "equipment": [
+        "dumbbells"
+      ]
+    },
+    {
+      "id": "dumbbell-shoulder-press",
+      "name": "Dumbbell Shoulder Press",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "shoulders",
+        "triceps"
+      ],
+      "secondaryMuscles": [
+        "chest",
+        "core"
+      ],
+      "instructions": [
+        "Hold dumbbells at shoulder height",
+        "Press dumbbells overhead",
+        "Keep core engaged for stability",
+        "Lower with control"
+      ],
+      "description": "Overhead pressing exercise with dumbbells",
+      "difficulty": "beginner",
+      "equipment": [
+        "dumbbells"
+      ]
+    },
+    {
+      "id": "dumbbell-curls",
+      "name": "Dumbbell Curls",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "biceps"
+      ],
+      "secondaryMuscles": [
+        "forearms"
+      ],
+      "instructions": [
+        "Stand holding dumbbells at sides",
+        "Curl dumbbells up toward shoulders",
+        "Keep elbows stationary at sides",
+        "Lower with control"
+      ],
+      "description": "Arm exercise targeting biceps",
+      "difficulty": "beginner",
+      "equipment": [
+        "dumbbells"
+      ]
+    },
+    {
+      "id": "dumbbell-tricep-extensions",
+      "name": "Dumbbell Tricep Extensions",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "triceps"
+      ],
+      "secondaryMuscles": [
+        "shoulders"
+      ],
+      "instructions": [
+        "Hold dumbbell overhead with both hands",
+        "Lower dumbbell behind head by bending elbows",
+        "Keep elbows stationary and pointing up",
+        "Extend back to starting position"
+      ],
+      "description": "Arm exercise targeting triceps",
+      "difficulty": "beginner",
+      "equipment": [
+        "dumbbells"
+      ]
+    },
+    {
+      "id": "dumbbell-lateral-raises",
+      "name": "Dumbbell Lateral Raises",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "shoulders"
+      ],
+      "secondaryMuscles": [
+        "traps"
+      ],
+      "instructions": [
+        "Stand holding dumbbells at sides",
+        "Raise dumbbells to shoulder height",
+        "Keep slight bend in elbows",
+        "Lower with control"
+      ],
+      "description": "Shoulder isolation exercise",
+      "difficulty": "beginner",
+      "equipment": [
+        "dumbbells"
+      ]
+    },
+    {
+      "id": "dumbbell-lunges",
+      "name": "Dumbbell Lunges",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondaryMuscles": [
+        "hamstrings"
+      ],
+      "instructions": [
+        "Hold dumbbells at sides",
+        "Step forward and lower hips",
+        "Push back to starting position",
+        "Alternate legs for each rep"
+      ],
+      "description": "Weighted lower body unilateral exercise",
+      "difficulty": "intermediate",
+      "equipment": [
+        "dumbbells"
+      ]
+    },
+    {
+      "id": "barbell-back-squat",
+      "name": "Barbell Back Squat",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondaryMuscles": [
+        "hamstrings",
+        "core",
+        "upper back"
+      ],
+      "instructions": [
+        "Position barbell on upper back",
+        "Stand with feet shoulder-width apart",
+        "Squat down by pushing hips back and bending knees",
+        "Drive through heels to return to standing"
+      ],
+      "description": "Compound lower body exercise",
+      "difficulty": "intermediate",
+      "equipment": [
+        "barbell",
+        "weight-plates",
+        "squat-rack"
+      ]
+    },
+    {
+      "id": "deadlift",
+      "name": "Deadlift",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "hamstrings",
+        "glutes",
+        "erector spinae"
+      ],
+      "secondaryMuscles": [
+        "lats",
+        "traps",
+        "core"
+      ],
+      "instructions": [
+        "Stand with feet hip-width apart, bar over mid-foot",
+        "Bend at hips and knees to grasp bar",
+        "Lift by extending hips and knees simultaneously",
+        "Keep bar close to body throughout movement"
+      ],
+      "description": "Fundamental posterior chain exercise",
+      "difficulty": "intermediate",
+      "equipment": [
+        "barbell",
+        "weight-plates"
+      ]
+    },
+    {
+      "id": "barbell-bench-press",
+      "name": "Barbell Bench Press",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "chest",
+        "triceps"
+      ],
+      "secondaryMuscles": [
+        "front delts",
+        "core"
+      ],
+      "instructions": [
+        "Lie on bench with barbell at chest height",
+        "Press barbell upward",
+        "Lower with control to chest",
+        "Keep feet planted and core engaged"
+      ],
+      "description": "Fundamental upper body pressing exercise",
+      "difficulty": "beginner",
+      "equipment": [
+        "barbell",
+        "bench"
+      ]
+    },
+    {
+      "id": "barbell-rows",
+      "name": "Barbell Rows",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "lats",
+        "rhomboids"
+      ],
+      "secondaryMuscles": [
+        "biceps",
+        "rear delts"
+      ],
+      "instructions": [
+        "Bend over with barbell at knee height",
+        "Pull barbell to chest",
+        "Squeeze shoulder blades together",
+        "Lower with control"
+      ],
+      "description": "Compound back exercise",
+      "difficulty": "intermediate",
+      "equipment": [
+        "barbell"
+      ]
+    },
+    {
+      "id": "barbell-shoulder-press",
+      "name": "Barbell Shoulder Press",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "shoulders",
+        "triceps"
+      ],
+      "secondaryMuscles": [
+        "chest",
+        "core",
+        "upper back"
+      ],
+      "instructions": [
+        "Hold barbell at shoulder height",
+        "Press barbell overhead",
+        "Keep core and legs tight for stability",
+        "Lower with control"
+      ],
+      "description": "Compound overhead pressing exercise",
+      "difficulty": "intermediate",
+      "equipment": [
+        "barbell"
+      ]
+    },
+    {
+      "id": "running",
+      "name": "Running",
+      "category": "cardio",
+      "logType": "cardio",
+      "primaryMuscles": [
+        "legs",
+        "cardiovascular system"
+      ],
+      "secondaryMuscles": [
+        "core"
+      ],
+      "instructions": [
+        "Start with light jog or walk",
+        "Maintain steady pace",
+        "Land on midfoot, not heel",
+        "Keep posture upright and relaxed"
+      ],
+      "description": "Cardiovascular exercise",
+      "difficulty": "beginner",
+      "equipment": []
+    },
+    {
+      "id": "jump-rope",
+      "name": "Jump Rope",
+      "category": "cardio",
+      "logType": "time",
+      "primaryMuscles": [
+        "calves",
+        "cardiovascular system"
+      ],
+      "secondaryMuscles": [
+        "shoulders",
+        "core"
+      ],
+      "instructions": [
+        "Hold rope handles at hip level",
+        "Jump on balls of feet",
+        "Keep jumps low and quick",
+        "Maintain steady rhythm"
+      ],
+      "description": "High-intensity cardio exercise",
+      "difficulty": "beginner",
+      "equipment": [
+        "jump-rope"
+      ]
+    },
+    {
+      "id": "stationary-bike",
+      "name": "Stationary Bike",
+      "category": "cardio",
+      "logType": "cardio",
+      "primaryMuscles": [
+        "quadriceps",
+        "cardiovascular system"
+      ],
+      "secondaryMuscles": [
+        "glutes",
+        "hamstrings"
+      ],
+      "instructions": [
+        "Adjust seat and handlebars for comfort",
+        "Pedal at steady pace",
+        "Adjust resistance as desired",
+        "Maintain upright posture"
+      ],
+      "description": "Low-impact cardio exercise",
+      "difficulty": "beginner",
+      "equipment": [
+        "stationary-bike"
+      ]
+    },
+    {
+      "id": "rowing-machine",
+      "name": "Rowing Machine",
+      "category": "cardio",
+      "logType": "cardio",
+      "primaryMuscles": [
+        "back",
+        "legs",
+        "cardiovascular system"
+      ],
+      "secondaryMuscles": [
+        "core",
+        "arms"
+      ],
+      "instructions": [
+        "Sit with feet in footrests",
+        "Grab handle and extend legs while pulling handle",
+        "Return to starting position with control",
+        "Maintain rhythm and breathing"
+      ],
+      "description": "Full-body cardio exercise",
+      "difficulty": "beginner",
+      "equipment": [
+        "rowing-machine"
+      ]
+    },
+    {
+      "id": "treadmill-walking",
+      "name": "Treadmill Walking",
+      "category": "cardio",
+      "logType": "cardio",
+      "primaryMuscles": [
+        "legs",
+        "cardiovascular system"
+      ],
+      "secondaryMuscles": [
+        "core"
+      ],
+      "instructions": [
+        "Start at comfortable pace",
+        "Maintain steady walking speed",
+        "Keep posture upright",
+        "Can be done while watching TV or reading"
+      ],
+      "description": "Low-intensity steady cardio",
+      "difficulty": "beginner",
+      "equipment": [
+        "treadmill"
+      ]
+    },
+    {
+      "id": "sprints",
+      "name": "Sprints",
+      "category": "cardio",
+      "logType": "cardio",
+      "primaryMuscles": [
+        "legs",
+        "cardiovascular system"
+      ],
+      "secondaryMuscles": [
+        "core",
+        "glutes"
+      ],
+      "instructions": [
+        "Start with 30 seconds of maximum effort",
+        "Follow with rest or walk period",
+        "Repeat for desired intervals",
+        "Allow for recovery between sprints"
+      ],
+      "description": "High-intensity interval cardio",
+      "difficulty": "advanced",
+      "equipment": []
+    },
+    {
+      "id": "child-s-pose",
+      "name": "Child's Pose",
+      "category": "flexibility",
+      "logType": "time",
+      "primaryMuscles": [
+        "back",
+        "hips"
+      ],
+      "secondaryMuscles": [
+        "shoulders"
+      ],
+      "instructions": [
+        "Kneel on floor with big toes touching",
+        "Sit back on heels and fold forward",
+        "Extend arms in front or alongside body",
+        "Hold and breathe deeply"
+      ],
+      "description": "Relaxing yoga stretch",
+      "difficulty": "beginner",
+      "equipment": []
+    },
+    {
+      "id": "cat-cow-stretch",
+      "name": "Cat-Cow Stretch",
+      "category": "flexibility",
+      "logType": "time",
+      "primaryMuscles": [
+        "spine",
+        "core"
+      ],
+      "secondaryMuscles": [
+        "shoulders"
+      ],
+      "instructions": [
+        "Start on hands and knees",
+        "Arch back and lift head (cow)",
+        "Round back and tuck chin (cat)",
+        "Alternate between positions smoothly"
+      ],
+      "description": "Spinal mobility exercise",
+      "difficulty": "beginner",
+      "equipment": []
+    },
+    {
+      "id": "hamstring-stretch",
+      "name": "Hamstring Stretch",
+      "category": "flexibility",
+      "logType": "time",
+      "primaryMuscles": [
+        "hamstrings"
+      ],
+      "secondaryMuscles": [
+        "lower back"
+      ],
+      "instructions": [
+        "Stand with feet hip-width apart",
+        "Hinge at hips and reach toward toes",
+        "Keep knees slightly bent",
+        "Hold and breathe deeply"
+      ],
+      "description": "Posterior chain flexibility exercise",
+      "difficulty": "beginner",
+      "equipment": []
+    },
+    {
+      "id": "hip-flexor-stretch",
+      "name": "Hip Flexor Stretch",
+      "category": "flexibility",
+      "logType": "time",
+      "primaryMuscles": [
+        "hip flexors"
+      ],
+      "secondaryMuscles": [
+        "quadriceps"
+      ],
+      "instructions": [
+        "Perform a lunge position",
+        "Gently press hips forward",
+        "Feel stretch in front of rear leg",
+        "Hold and breathe"
+      ],
+      "description": "Hip mobility exercise",
+      "difficulty": "beginner",
+      "equipment": []
+    },
+    {
+      "id": "shoulder-stretch",
+      "name": "Shoulder Stretch",
+      "category": "flexibility",
+      "logType": "time",
+      "primaryMuscles": [
+        "shoulders"
+      ],
+      "secondaryMuscles": [
+        "chest"
+      ],
+      "instructions": [
+        "Bring one arm across body",
+        "Use opposite hand to pull arm toward chest",
+        "Keep shoulder blade pulled back",
+        "Hold and breathe"
+      ],
+      "description": "Upper body mobility exercise",
+      "difficulty": "beginner",
+      "equipment": []
+    },
+    {
+      "id": "downward-dog",
+      "name": "Downward Dog",
+      "category": "flexibility",
+      "logType": "time",
+      "primaryMuscles": [
+        "shoulders",
+        "hamstrings"
+      ],
+      "secondaryMuscles": [
+        "calves",
+        "back"
+      ],
+      "instructions": [
+        "Start in plank position",
+        "Push hips up and back",
+        "Form inverted V shape",
+        "Hold and breathe for desired duration"
+      ],
+      "description": "Full-body flexibility yoga pose",
+      "difficulty": "beginner",
+      "equipment": []
+    },
+    {
+      "id": "quad-stretch",
+      "name": "Quad Stretch",
+      "category": "flexibility",
+      "logType": "time",
+      "primaryMuscles": [
+        "quadriceps"
+      ],
+      "secondaryMuscles": [
+        "hip flexors"
+      ],
+      "instructions": [
+        "Stand on one leg",
+        "Pull other foot toward glutes",
+        "Keep knees together",
+        "Hold and breathe"
+      ],
+      "description": "Lower body flexibility exercise",
+      "difficulty": "beginner",
+      "equipment": []
+    },
+    {
+      "id": "ab-wheel-rollout",
+      "name": "Ab Wheel Rollout",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "core",
+        "abs"
+      ],
+      "secondaryMuscles": [
+        "shoulders",
+        "chest"
+      ],
+      "instructions": [
+        "Stand with feet hip-width apart, holding ab roller",
+        "Engage core and roll forward while maintaining plank position",
+        "Roll out as far as you can control",
+        "Use core to pull yourself back to starting position",
+        "Keep back flat and hips level throughout"
+      ],
+      "description": "Advanced core exercise using ab roller",
+      "difficulty": "advanced",
+      "equipment": [
+        "ab-roller"
+      ]
+    },
+    {
+      "id": "kneeling-ab-rollout",
+      "name": "Kneeling Ab Rollout",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "core",
+        "abs"
+      ],
+      "secondaryMuscles": [
+        "shoulders"
+      ],
+      "instructions": [
+        "Kneel on floor with ab roller in front",
+        "Grasp roller and engage core",
+        "Roll forward slowly maintaining neutral spine",
+        "Roll as far as comfortable",
+        "Pull back to kneeling position using core strength"
+      ],
+      "description": "Kneeling variation of ab wheel rollout",
+      "difficulty": "intermediate",
+      "equipment": [
+        "ab-roller"
+      ]
+    },
+    {
+      "id": "aerobic-stepping",
+      "name": "Aerobic Stepping",
+      "category": "cardio",
+      "logType": "time",
+      "primaryMuscles": [
+        "quadriceps",
+        "glutes",
+        "cardiovascular system"
+      ],
+      "secondaryMuscles": [
+        "hamstrings",
+        "calves",
+        "core"
+      ],
+      "instructions": [
+        "Stand facing the stepper platform",
+        "Step up with one foot, then the other",
+        "Step down in reverse order",
+        "Maintain upright posture and steady pace",
+        "Keep arms moving naturally or use them for balance"
+      ],
+      "description": "Full-body cardio exercise on aerobic stepper",
+      "difficulty": "beginner",
+      "equipment": [
+        "aerobic-stepper"
+      ]
+    },
+    {
+      "id": "step-ups",
+      "name": "Step Ups",
+      "category": "cardio",
+      "logType": "reps",
+      "primaryMuscles": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondaryMuscles": [
+        "hamstrings",
+        "calves"
+      ],
+      "instructions": [
+        "Stand facing stepper with hands on hips or arms swinging",
+        "Step up with one leg explosively",
+        "Drive knee up at the top",
+        "Step back down with control",
+        "Alternate legs in continuous motion"
+      ],
+      "description": "Lower body cardio exercise with intensity",
+      "difficulty": "intermediate",
+      "equipment": [
+        "aerobic-stepper"
+      ]
+    },
+    {
+      "id": "high-step",
+      "name": "High Step",
+      "category": "cardio",
+      "logType": "time",
+      "primaryMuscles": [
+        "glutes",
+        "quadriceps",
+        "cardiovascular system"
+      ],
+      "secondaryMuscles": [
+        "core",
+        "hip flexors"
+      ],
+      "instructions": [
+        "Stand beside or facing stepper",
+        "Drive knee up to chest height onto stepper",
+        "Alternate rapidly between legs",
+        "Maintain high intensity throughout",
+        "Engage core for stability and power"
+      ],
+      "description": "High-intensity cardio using stepper with high knee drive",
+      "difficulty": "advanced",
+      "equipment": [
+        "aerobic-stepper"
+      ]
+    },
+    {
+      "id": "wall-push-ups",
+      "name": "Wall Push-ups",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "chest",
+        "triceps",
+        "shoulders"
+      ],
+      "secondaryMuscles": [
+        "core"
+      ],
+      "instructions": [
+        "Stand facing a wall about 2 feet away",
+        "Place hands on wall at shoulder height",
+        "Lean in and bend elbows to touch chest toward wall",
+        "Push back to starting position",
+        "Maintain body in straight line from head to heels"
+      ],
+      "description": "Beginner-friendly push-up progression using a wall",
+      "difficulty": "beginner",
+      "equipment": []
+    },
+    {
+      "id": "incline-push-ups",
+      "name": "Incline Push-ups",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "chest",
+        "triceps",
+        "shoulders"
+      ],
+      "secondaryMuscles": [
+        "core"
+      ],
+      "instructions": [
+        "Place hands on elevated surface like chair or bench",
+        "Body should form straight line from head to heels",
+        "Lower body until chest nearly touches the elevated surface",
+        "Push back up to starting position",
+        "Keep core engaged throughout movement"
+      ],
+      "description": "Push-up variation with hands elevated on a chair or bench",
+      "difficulty": "beginner",
+      "equipment": []
+    },
+    {
+      "id": "decline-push-ups",
+      "name": "Decline Push-ups",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "chest",
+        "triceps",
+        "shoulders"
+      ],
+      "secondaryMuscles": [
+        "core"
+      ],
+      "instructions": [
+        "Place feet on elevated surface like chair or bench",
+        "Hands on floor in push-up position",
+        "Body should form straight line",
+        "Lower body until chest nearly touches floor",
+        "Push back up, maintaining control"
+      ],
+      "description": "Advanced push-up with feet elevated on a chair or bench",
+      "difficulty": "intermediate",
+      "equipment": []
+    },
+    {
+      "id": "pike-push-ups",
+      "name": "Pike Push-ups",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "shoulders",
+        "triceps"
+      ],
+      "secondaryMuscles": [
+        "chest",
+        "core"
+      ],
+      "instructions": [
+        "Start in downward dog yoga position",
+        "Hips raised high, forming inverted V shape",
+        "Bend elbows and lower head toward floor between hands",
+        "Push back to starting position",
+        "Maintain pike position throughout"
+      ],
+      "description": "Push-up variation emphasizing shoulder muscles",
+      "difficulty": "intermediate",
+      "equipment": []
+    },
+    {
+      "id": "hand-release-push-ups",
+      "name": "Hand Release Push-ups",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "chest",
+        "triceps",
+        "shoulders"
+      ],
+      "secondaryMuscles": [
+        "core"
+      ],
+      "instructions": [
+        "Start in standard push-up position",
+        "Lower body to floor",
+        "Release hands briefly from floor",
+        "Place hands back and explosively push up",
+        "Control descent and repeat"
+      ],
+      "description": "Explosive push-up variation where hands leave the ground",
+      "difficulty": "intermediate",
+      "equipment": []
+    },
+    {
+      "id": "chin-ups",
+      "name": "Chin-ups",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "biceps",
+        "lats"
+      ],
+      "secondaryMuscles": [
+        "rhomboids",
+        "rear delts"
+      ],
+      "instructions": [
+        "Hang from pull-up bar with underhand grip",
+        "Pull your body up until chin is over the bar",
+        "Lower yourself down with control",
+        "Keep core engaged throughout",
+        "Avoid swinging or kipping"
+      ],
+      "description": "Pull-up variation with underhand grip",
+      "difficulty": "intermediate",
+      "equipment": [
+        "pull-up-bar"
+      ]
+    },
+    {
+      "id": "assisted-pull-ups",
+      "name": "Assisted Pull-ups",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "lats",
+        "rhomboids"
+      ],
+      "secondaryMuscles": [
+        "biceps",
+        "rear delts"
+      ],
+      "instructions": [
+        "Loop assistance band over pull-up bar",
+        "Place knee or foot in band for support",
+        "Pull your body up with band assistance",
+        "Lower with control",
+        "Gradually reduce band assistance as you progress"
+      ],
+      "description": "Pull-up progression using assistance band",
+      "difficulty": "beginner",
+      "equipment": [
+        "pull-up-bar"
+      ]
+    },
+    {
+      "id": "scapular-pull-ups",
+      "name": "Scapular Pull-ups",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "rhomboids",
+        "traps"
+      ],
+      "secondaryMuscles": [
+        "lats"
+      ],
+      "instructions": [
+        "Hang from pull-up bar with straight arms",
+        "Pull shoulder blades down and back without bending elbows",
+        "Lift body just a few inches",
+        "Return to starting position",
+        "This is foundational for pull-up strength"
+      ],
+      "description": "Pull-up progression focusing on scapular engagement",
+      "difficulty": "beginner",
+      "equipment": [
+        "pull-up-bar"
+      ]
+    },
+    {
+      "id": "jump-squats",
+      "name": "Jump Squats",
+      "category": "cardio",
+      "logType": "reps",
+      "primaryMuscles": [
+        "quadriceps",
+        "glutes",
+        "cardiovascular system"
+      ],
+      "secondaryMuscles": [
+        "hamstrings",
+        "calves",
+        "core"
+      ],
+      "instructions": [
+        "Stand with feet shoulder-width apart",
+        "Lower into squat position",
+        "Explosively jump up, extending legs fully",
+        "Land softly and immediately descend into next squat",
+        "Keep chest up and core engaged"
+      ],
+      "description": "Explosive lower body exercise combining strength and cardio",
+      "difficulty": "intermediate",
+      "equipment": []
+    },
+    {
+      "id": "box-jumps",
+      "name": "Box Jumps",
+      "category": "cardio",
+      "logType": "reps",
+      "primaryMuscles": [
+        "glutes",
+        "quadriceps",
+        "cardiovascular system"
+      ],
+      "secondaryMuscles": [
+        "hamstrings",
+        "calves",
+        "core"
+      ],
+      "instructions": [
+        "Stand facing a sturdy box or elevated surface",
+        "Swing arms back and bend knees",
+        "Explosively jump up onto the box",
+        "Land softly with bent knees",
+        "Step down carefully and repeat"
+      ],
+      "description": "Explosive power exercise jumping onto an elevated surface",
+      "difficulty": "advanced",
+      "equipment": []
+    },
+    {
+      "id": "calf-raises",
+      "name": "Calf Raises",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "calves"
+      ],
+      "secondaryMuscles": [
+        "core"
+      ],
+      "instructions": [
+        "Stand with feet hip-width apart",
+        "Rise up onto balls of feet",
+        "Hold at the top for a second",
+        "Lower heels back down with control",
+        "Keep body upright throughout"
+      ],
+      "description": "Calf muscle isolation exercise",
+      "difficulty": "beginner",
+      "equipment": []
+    },
+    {
+      "id": "wall-sits",
+      "name": "Wall Sits",
+      "category": "strength",
+      "logType": "time",
+      "primaryMuscles": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondaryMuscles": [
+        "hamstrings",
+        "core"
+      ],
+      "instructions": [
+        "Place back against a wall",
+        "Slide down until knees are at 90 degrees",
+        "Thighs should be parallel to ground",
+        "Keep back flat against wall",
+        "Hold position for desired time"
+      ],
+      "description": "Isometric lower body exercise using a wall",
+      "difficulty": "intermediate",
+      "equipment": []
+    },
+    {
+      "id": "single-leg-glute-bridges",
+      "name": "Single-Leg Glute Bridges",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "glutes"
+      ],
+      "secondaryMuscles": [
+        "hamstrings",
+        "core",
+        "lower back"
+      ],
+      "instructions": [
+        "Lie on back with knees bent, feet flat",
+        "Extend one leg straight",
+        "Push through planted foot to lift hips",
+        "Squeeze glutes at the top",
+        "Lower with control and alternate legs"
+      ],
+      "description": "Unilateral glute exercise for strength and balance",
+      "difficulty": "intermediate",
+      "equipment": []
+    },
+    {
+      "id": "bulgarian-split-squats",
+      "name": "Bulgarian Split Squats",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondaryMuscles": [
+        "hamstrings",
+        "core"
+      ],
+      "instructions": [
+        "Stand facing away from a chair or bench",
+        "Place one foot on elevated surface behind you",
+        "Step forward with front leg",
+        "Lower hips until front thigh is parallel to ground",
+        "Push through front foot to return to standing"
+      ],
+      "description": "Unilateral lower body exercise with rear foot elevated on a chair",
+      "difficulty": "intermediate",
+      "equipment": []
+    },
+    {
+      "id": "side-lunges",
+      "name": "Side Lunges",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondaryMuscles": [
+        "hamstrings",
+        "adductors"
+      ],
+      "instructions": [
+        "Stand with feet together",
+        "Step to the side and lower hips",
+        "Keep the stepping leg bent and other leg straight",
+        "Push back to center",
+        "Alternate sides"
+      ],
+      "description": "Lateral lower body lunge for quad and glute work",
+      "difficulty": "beginner",
+      "equipment": []
+    },
+    {
+      "id": "reverse-lunges",
+      "name": "Reverse Lunges",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondaryMuscles": [
+        "hamstrings",
+        "core"
+      ],
+      "instructions": [
+        "Stand with feet together",
+        "Step backward and lower hips",
+        "Back knee should nearly touch floor",
+        "Front knee at 90 degrees",
+        "Push through front foot to return to standing"
+      ],
+      "description": "Lower body lunge stepping backward",
+      "difficulty": "beginner",
+      "equipment": []
+    },
+    {
+      "id": "side-planks",
+      "name": "Side Planks",
+      "category": "strength",
+      "logType": "time",
+      "primaryMuscles": [
+        "core",
+        "obliques"
+      ],
+      "secondaryMuscles": [
+        "shoulders",
+        "glutes"
+      ],
+      "instructions": [
+        "Lie on side with body in straight line",
+        "Support body on forearm and outer foot",
+        "Keep hips lifted and core engaged",
+        "Hold position for desired time",
+        "Repeat on other side"
+      ],
+      "description": "Lateral core strengthening exercise",
+      "difficulty": "intermediate",
+      "equipment": []
+    },
+    {
+      "id": "dead-bugs",
+      "name": "Dead Bugs",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "core",
+        "abs"
+      ],
+      "secondaryMuscles": [
+        "lower back",
+        "hip flexors"
+      ],
+      "instructions": [
+        "Lie on back with knees bent, feet flat",
+        "Raise arms toward ceiling and lift knees to 90 degrees",
+        "Slowly extend opposite arm and leg away from body",
+        "Return to starting position",
+        "Alternate sides in controlled manner"
+      ],
+      "description": "Core stability exercise performed lying on back",
+      "difficulty": "beginner",
+      "equipment": []
+    },
+    {
+      "id": "hollow-body-holds",
+      "name": "Hollow Body Holds",
+      "category": "strength",
+      "logType": "time",
+      "primaryMuscles": [
+        "core",
+        "abs"
+      ],
+      "secondaryMuscles": [
+        "chest",
+        "shoulders"
+      ],
+      "instructions": [
+        "Lie on back with arms extended overhead",
+        "Press lower back into floor and engage core",
+        "Shoulders should be pulled away from ears",
+        "Body should form hollow shape",
+        "Hold position while maintaining tension"
+      ],
+      "description": "Foundational core position for gymnastics movements",
+      "difficulty": "intermediate",
+      "equipment": []
+    },
+    {
+      "id": "bicycle-crunches",
+      "name": "Bicycle Crunches",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "core",
+        "abs",
+        "obliques"
+      ],
+      "secondaryMuscles": [
+        "hip flexors"
+      ],
+      "instructions": [
+        "Lie on back with knees bent, feet off ground",
+        "Place hands behind head",
+        "Bring opposite elbow toward opposite knee",
+        "Rotate torso while bringing knee toward elbow",
+        "Alternate sides in pedaling motion"
+      ],
+      "description": "Core exercise with rotational component for obliques",
+      "difficulty": "beginner",
+      "equipment": []
+    },
+    {
+      "id": "russian-twists",
+      "name": "Russian Twists",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "core",
+        "obliques"
+      ],
+      "secondaryMuscles": [
+        "abs"
+      ],
+      "instructions": [
+        "Sit on floor with knees bent, feet elevated",
+        "Lean back slightly while maintaining upright torso",
+        "Rotate torso side to side",
+        "Touch floor beside body with each rotation",
+        "Keep core engaged throughout"
+      ],
+      "description": "Rotational core exercise",
+      "difficulty": "intermediate",
+      "equipment": []
+    },
+    {
+      "id": "superman-holds",
+      "name": "Superman Holds",
+      "category": "strength",
+      "logType": "time",
+      "primaryMuscles": [
+        "lower back",
+        "erector spinae",
+        "glutes"
+      ],
+      "secondaryMuscles": [
+        "shoulders",
+        "core"
+      ],
+      "instructions": [
+        "Lie face down on floor with arms extended overhead",
+        "Engage core and glutes",
+        "Lift arms and legs off ground simultaneously",
+        "Hold position while maintaining tension",
+        "Lower with control and rest"
+      ],
+      "description": "Posterior chain strengthening exercise",
+      "difficulty": "intermediate",
+      "equipment": []
+    },
+    {
+      "id": "plank-shoulder-taps",
+      "name": "Plank Shoulder Taps",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "core",
+        "abs"
+      ],
+      "secondaryMuscles": [
+        "shoulders",
+        "chest"
+      ],
+      "instructions": [
+        "Start in push-up plank position",
+        "Tap left shoulder with right hand",
+        "Return hand to floor",
+        "Tap right shoulder with left hand",
+        "Alternate in controlled manner without rotating hips"
+      ],
+      "description": "Dynamic core exercise combining plank with shoulder engagement",
+      "difficulty": "intermediate",
+      "equipment": []
+    },
+    {
+      "id": "bear-crawls",
+      "name": "Bear Crawls",
+      "category": "cardio",
+      "logType": "time",
+      "primaryMuscles": [
+        "core",
+        "chest",
+        "shoulders",
+        "cardiovascular system"
+      ],
+      "secondaryMuscles": [
+        "legs",
+        "triceps"
+      ],
+      "instructions": [
+        "Start on hands and feet in tabletop position",
+        "Keep hips low and parallel to shoulders",
+        "Move opposite arm and leg forward",
+        "Move in controlled manner across floor",
+        "Maintain core engagement throughout"
+      ],
+      "description": "Full-body functional movement for strength and cardio",
+      "difficulty": "intermediate",
+      "equipment": []
+    },
+    {
+      "id": "crab-walks",
+      "name": "Crab Walks",
+      "category": "cardio",
+      "logType": "time",
+      "primaryMuscles": [
+        "triceps",
+        "shoulders",
+        "core"
+      ],
+      "secondaryMuscles": [
+        "chest",
+        "glutes"
+      ],
+      "instructions": [
+        "Sit on floor with hands behind you, knees bent",
+        "Lift hips off ground",
+        "Walk forward by moving hands and feet",
+        "Keep hips lifted throughout movement",
+        "Maintain upright torso position"
+      ],
+      "description": "Reverse functional movement strengthening shoulders and core",
+      "difficulty": "intermediate",
+      "equipment": []
+    },
+    {
+      "id": "inchworms",
+      "name": "Inchworms",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "core",
+        "chest",
+        "hamstrings"
+      ],
+      "secondaryMuscles": [
+        "shoulders",
+        "triceps"
+      ],
+      "instructions": [
+        "Stand with feet together",
+        "Bend forward and place hands on floor",
+        "Walk hands forward to plank position",
+        "Walk feet toward hands, keeping legs straight",
+        "Return to standing and repeat"
+      ],
+      "description": "Full-body functional movement combining stretching and strength",
+      "difficulty": "intermediate",
+      "equipment": []
+    },
+    {
+      "id": "farmer-carries",
+      "name": "Farmer Carries",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "forearms",
+        "traps",
+        "core"
+      ],
+      "secondaryMuscles": [
+        "grip"
+      ],
+      "instructions": [
+        "Hold dumbbells or weights at sides",
+        "Stand tall with shoulders back",
+        "Walk forward while maintaining upright posture",
+        "Keep core engaged throughout",
+        "Distance can be measured in time or distance"
+      ],
+      "description": "Functional movement building grip strength and core stability",
+      "difficulty": "beginner",
+      "equipment": [
+        "dumbbells"
+      ]
+    },
+    {
+      "id": "goblet-squats",
+      "name": "Goblet Squats",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondaryMuscles": [
+        "hamstrings",
+        "core"
+      ],
+      "instructions": [
+        "Hold dumbbell or kettlebell vertically at chest",
+        "Stand with feet shoulder-width apart",
+        "Lower into squat position",
+        "Knees track over toes, chest stays upright",
+        "Drive through heels to return to standing"
+      ],
+      "description": "Lower body squat holding weight at chest",
+      "difficulty": "beginner",
+      "equipment": [
+        "dumbbells"
+      ]
+    },
+    {
+      "id": "turkish-get-ups",
+      "name": "Turkish Get-ups",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "shoulders",
+        "core",
+        "full body"
+      ],
+      "secondaryMuscles": [
+        "glutes",
+        "hamstrings"
+      ],
+      "instructions": [
+        "Lie on back holding kettlebell on one side",
+        "Press kettlebell to arm-extended position",
+        "Sit up while keeping kettlebell extended",
+        "Reverse the movement to return to starting position",
+        "Perform entire sequence in one fluid motion"
+      ],
+      "description": "Complex full-body movement combining strength and mobility",
+      "difficulty": "advanced",
+      "equipment": [
+        "kettlebell"
+      ]
+    },
+    {
+      "id": "shadowboxing",
+      "name": "Shadowboxing",
+      "category": "cardio",
+      "logType": "time",
+      "primaryMuscles": [
+        "shoulders",
+        "cardiovascular system"
+      ],
+      "secondaryMuscles": [
+        "core",
+        "legs"
+      ],
+      "instructions": [
+        "Stand in boxing stance with feet shoulder-width apart",
+        "Throw punches at imaginary opponent",
+        "Move around in footwork patterns",
+        "Alternate between different punch combinations",
+        "Maintain continuous movement and breathing"
+      ],
+      "description": "Cardio exercise mimicking boxing movements without equipment",
+      "difficulty": "beginner",
+      "equipment": []
+    },
+    {
+      "id": "face-pulls",
+      "name": "Face Pulls",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "rear delts",
+        "rhomboids"
+      ],
+      "secondaryMuscles": [
+        "shoulders",
+        "upper back"
+      ],
+      "instructions": [
+        "Attach resistance band at face height to door anchor",
+        "Hold band with both hands and step back for tension",
+        "Pull band toward face, separating hands to sides",
+        "Focus on squeezing shoulder blades together",
+        "Return to starting position with control"
+      ],
+      "description": "Shoulder health exercise using resistance band",
+      "difficulty": "beginner",
+      "equipment": [
+        "resistance-bands",
+        "door-anchor"
+      ]
+    },
+    {
+      "id": "band-pull-aparts",
+      "name": "Band Pull-aparts",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "rhomboids",
+        "rear delts"
+      ],
+      "secondaryMuscles": [
+        "upper back"
+      ],
+      "instructions": [
+        "Hold resistance band at chest height with arms extended",
+        "Band should have slight tension",
+        "Pull band apart by separating hands to sides",
+        "Squeeze shoulder blades together at maximum contraction",
+        "Return to center with control"
+      ],
+      "description": "Upper back and shoulder health exercise with resistance band",
+      "difficulty": "beginner",
+      "equipment": [
+        "resistance-bands"
+      ]
+    },
+    {
+      "id": "band-chest-press",
+      "name": "Band Chest Press",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "chest",
+        "triceps"
+      ],
+      "secondaryMuscles": [
+        "front delts"
+      ],
+      "instructions": [
+        "Anchor resistance band to door at chest height",
+        "Face away from door and hold band handles",
+        "Press hands forward, extending arms fully",
+        "Maintain upright posture",
+        "Return to chest with control"
+      ],
+      "description": "Chest exercise using resistance band",
+      "difficulty": "beginner",
+      "equipment": [
+        "resistance-bands",
+        "door-anchor"
+      ]
+    },
+    {
+      "id": "band-overhead-press",
+      "name": "Band Overhead Press",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "shoulders",
+        "triceps"
+      ],
+      "secondaryMuscles": [
+        "chest",
+        "upper back"
+      ],
+      "instructions": [
+        "Stand on resistance band or secure it at feet",
+        "Hold band handles at shoulder height",
+        "Press hands overhead against resistance",
+        "Keep core engaged for stability",
+        "Lower with control to shoulder height"
+      ],
+      "description": "Shoulder pressing exercise using resistance band",
+      "difficulty": "beginner",
+      "equipment": [
+        "resistance-bands"
+      ]
+    },
+    {
+      "id": "band-rows",
+      "name": "Band Rows",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "lats",
+        "rhomboids"
+      ],
+      "secondaryMuscles": [
+        "biceps",
+        "rear delts"
+      ],
+      "instructions": [
+        "Anchor resistance band at chest height or stand on it",
+        "Hold band handles with arms extended",
+        "Pull hands toward torso against resistance",
+        "Squeeze shoulder blades together at contraction",
+        "Return to extended position with control"
+      ],
+      "description": "Back exercise using resistance band",
+      "difficulty": "beginner",
+      "equipment": [
+        "resistance-bands"
+      ]
+    },
+    {
+      "id": "romanian-deadlift",
+      "name": "Romanian Deadlift",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "hamstrings",
+        "glutes"
+      ],
+      "secondaryMuscles": [
+        "back"
+      ],
+      "instructions": [],
+      "description": null,
+      "difficulty": "intermediate",
+      "equipment": [
+        "barbell",
+        "weight-plates"
+      ]
+    },
+    {
+      "id": "incline-barbell-bench-press",
+      "name": "Incline Barbell Bench Press",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "chest",
+        "shoulders"
+      ],
+      "secondaryMuscles": [
+        "triceps"
+      ],
+      "instructions": [],
+      "description": null,
+      "difficulty": "intermediate",
+      "equipment": [
+        "barbell",
+        "bench"
+      ]
+    },
+    {
+      "id": "incline-dumbbell-press",
+      "name": "Incline Dumbbell Press",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "chest",
+        "shoulders"
+      ],
+      "secondaryMuscles": [
+        "triceps"
+      ],
+      "instructions": [],
+      "description": null,
+      "difficulty": "intermediate",
+      "equipment": [
+        "dumbbells",
+        "bench"
+      ]
+    },
+    {
+      "id": "front-squat",
+      "name": "Front Squat",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondaryMuscles": [
+        "core"
+      ],
+      "instructions": [],
+      "description": null,
+      "difficulty": "intermediate",
+      "equipment": [
+        "barbell",
+        "weight-plates",
+        "squat-rack"
+      ]
+    },
+    {
+      "id": "barbell-hip-thrust",
+      "name": "Barbell Hip Thrust",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "glutes"
+      ],
+      "secondaryMuscles": [
+        "hamstrings"
+      ],
+      "instructions": [],
+      "description": null,
+      "difficulty": "intermediate",
+      "equipment": [
+        "barbell",
+        "bench"
+      ]
+    },
+    {
+      "id": "overhead-press",
+      "name": "Overhead Press",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "shoulders"
+      ],
+      "secondaryMuscles": [
+        "triceps",
+        "core"
+      ],
+      "instructions": [],
+      "description": null,
+      "difficulty": "intermediate",
+      "equipment": [
+        "barbell",
+        "weight-plates"
+      ]
+    },
+    {
+      "id": "barbell-curl",
+      "name": "Barbell Curl",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "biceps"
+      ],
+      "secondaryMuscles": [
+        "forearms"
+      ],
+      "instructions": [],
+      "description": null,
+      "difficulty": "intermediate",
+      "equipment": [
+        "barbell"
+      ]
+    },
+    {
+      "id": "hammer-curls",
+      "name": "Hammer Curls",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "biceps",
+        "forearms"
+      ],
+      "secondaryMuscles": [],
+      "instructions": [],
+      "description": null,
+      "difficulty": "intermediate",
+      "equipment": [
+        "dumbbells"
+      ]
+    },
+    {
+      "id": "skull-crushers",
+      "name": "Skull Crushers",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "triceps"
+      ],
+      "secondaryMuscles": [],
+      "instructions": [],
+      "description": null,
+      "difficulty": "intermediate",
+      "equipment": [
+        "barbell",
+        "bench"
+      ]
+    },
+    {
+      "id": "lat-pulldown",
+      "name": "Lat Pulldown",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "back",
+        "biceps"
+      ],
+      "secondaryMuscles": [
+        "shoulders"
+      ],
+      "instructions": [],
+      "description": null,
+      "difficulty": "intermediate",
+      "equipment": [
+        "cable-machine"
+      ]
+    },
+    {
+      "id": "seated-cable-row",
+      "name": "Seated Cable Row",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "back"
+      ],
+      "secondaryMuscles": [
+        "biceps"
+      ],
+      "instructions": [],
+      "description": null,
+      "difficulty": "intermediate",
+      "equipment": [
+        "cable-machine"
+      ]
+    },
+    {
+      "id": "cable-tricep-pushdown",
+      "name": "Cable Tricep Pushdown",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "triceps"
+      ],
+      "secondaryMuscles": [],
+      "instructions": [],
+      "description": null,
+      "difficulty": "intermediate",
+      "equipment": [
+        "cable-machine"
+      ]
+    },
+    {
+      "id": "cable-fly",
+      "name": "Cable Fly",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "chest"
+      ],
+      "secondaryMuscles": [
+        "shoulders"
+      ],
+      "instructions": [],
+      "description": null,
+      "difficulty": "intermediate",
+      "equipment": [
+        "cable-machine"
+      ]
+    },
+    {
+      "id": "cable-lateral-raise",
+      "name": "Cable Lateral Raise",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "shoulders"
+      ],
+      "secondaryMuscles": [],
+      "instructions": [],
+      "description": null,
+      "difficulty": "intermediate",
+      "equipment": [
+        "cable-machine"
+      ]
+    },
+    {
+      "id": "cable-face-pull",
+      "name": "Cable Face Pull",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "shoulders",
+        "back"
+      ],
+      "secondaryMuscles": [],
+      "instructions": [],
+      "description": null,
+      "difficulty": "intermediate",
+      "equipment": [
+        "cable-machine"
+      ]
+    },
+    {
+      "id": "leg-press",
+      "name": "Leg Press",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondaryMuscles": [
+        "hamstrings"
+      ],
+      "instructions": [],
+      "description": null,
+      "difficulty": "intermediate",
+      "equipment": []
+    },
+    {
+      "id": "leg-extension",
+      "name": "Leg Extension",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "quadriceps"
+      ],
+      "secondaryMuscles": [],
+      "instructions": [],
+      "description": null,
+      "difficulty": "intermediate",
+      "equipment": []
+    },
+    {
+      "id": "lying-leg-curl",
+      "name": "Lying Leg Curl",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "hamstrings"
+      ],
+      "secondaryMuscles": [],
+      "instructions": [],
+      "description": null,
+      "difficulty": "intermediate",
+      "equipment": []
+    },
+    {
+      "id": "seated-calf-raise",
+      "name": "Seated Calf Raise",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "calves"
+      ],
+      "secondaryMuscles": [],
+      "instructions": [],
+      "description": null,
+      "difficulty": "intermediate",
+      "equipment": []
+    },
+    {
+      "id": "chest-press-machine",
+      "name": "Chest Press Machine",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "chest"
+      ],
+      "secondaryMuscles": [
+        "triceps",
+        "shoulders"
+      ],
+      "instructions": [],
+      "description": null,
+      "difficulty": "intermediate",
+      "equipment": []
+    },
+    {
+      "id": "pec-deck",
+      "name": "Pec Deck",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "chest"
+      ],
+      "secondaryMuscles": [],
+      "instructions": [],
+      "description": null,
+      "difficulty": "intermediate",
+      "equipment": []
+    },
+    {
+      "id": "hack-squat",
+      "name": "Hack Squat",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondaryMuscles": [],
+      "instructions": [],
+      "description": null,
+      "difficulty": "intermediate",
+      "equipment": []
+    },
+    {
+      "id": "t-bar-row",
+      "name": "T-Bar Row",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "back"
+      ],
+      "secondaryMuscles": [
+        "biceps"
+      ],
+      "instructions": [],
+      "description": null,
+      "difficulty": "intermediate",
+      "equipment": [
+        "barbell",
+        "weight-plates"
+      ]
+    },
+    {
+      "id": "rear-delt-fly",
+      "name": "Rear Delt Fly",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "shoulders"
+      ],
+      "secondaryMuscles": [
+        "back"
+      ],
+      "instructions": [],
+      "description": null,
+      "difficulty": "intermediate",
+      "equipment": [
+        "dumbbells"
+      ]
+    },
+    {
+      "id": "weighted-dips",
+      "name": "Weighted Dips",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "triceps",
+        "chest"
+      ],
+      "secondaryMuscles": [
+        "shoulders"
+      ],
+      "instructions": [],
+      "description": null,
+      "difficulty": "intermediate",
+      "equipment": []
+    },
+    {
+      "id": "kettlebell-swings",
+      "name": "Kettlebell Swings",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "glutes",
+        "hamstrings"
+      ],
+      "secondaryMuscles": [
+        "core",
+        "back"
+      ],
+      "instructions": [],
+      "description": null,
+      "difficulty": "intermediate",
+      "equipment": [
+        "kettlebell"
+      ]
+    },
+    {
+      "id": "hanging-leg-raise",
+      "name": "Hanging Leg Raise",
+      "category": "strength",
+      "logType": "reps",
+      "primaryMuscles": [
+        "core"
+      ],
+      "secondaryMuscles": [],
+      "instructions": [],
+      "description": null,
+      "difficulty": "intermediate",
+      "equipment": [
+        "pull-up-bar"
+      ]
+    },
+    {
+      "id": "cable-crunch",
+      "name": "Cable Crunch",
+      "category": "strength",
+      "logType": "weight_reps",
+      "primaryMuscles": [
+        "core"
+      ],
+      "secondaryMuscles": [],
+      "instructions": [],
+      "description": null,
+      "difficulty": "intermediate",
+      "equipment": [
+        "cable-machine"
+      ]
+    },
+    {
+      "id": "elliptical",
+      "name": "Elliptical",
+      "category": "cardio",
+      "logType": "cardio",
+      "primaryMuscles": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondaryMuscles": [],
+      "instructions": [],
+      "description": null,
+      "difficulty": "intermediate",
+      "equipment": [
+        "elliptical"
+      ]
+    },
+    {
+      "id": "stair-climber",
+      "name": "Stair Climber",
+      "category": "cardio",
+      "logType": "cardio",
+      "primaryMuscles": [
+        "quadriceps",
+        "glutes",
+        "calves"
+      ],
+      "secondaryMuscles": [],
+      "instructions": [],
+      "description": null,
+      "difficulty": "intermediate",
+      "equipment": []
+    }
+  ]
+}
