@@ -1,4 +1,4 @@
-import { Link, Stack } from 'expo-router';
+import { Link, router, Stack } from 'expo-router';
 import { useState } from 'react';
 import { FlatList, Pressable, ScrollView, TextInput, View } from 'react-native';
 
@@ -67,22 +67,21 @@ export default function ExerciseLibrary() {
           exercises ? <T variant="secondary">No exercises match. Tap + to add your own.</T> : undefined
         }
         renderItem={({ item }) => (
-          <Link href={{ pathname: '/exercises/[id]', params: { id: item.id } }} asChild>
-            <Pressable
-              style={({ pressed }) => ({
-                backgroundColor: p.surface,
-                borderRadius: Radius.md,
-                padding: Spacing.md,
-                opacity: pressed ? 0.7 : 1,
-                gap: 2,
-              })}>
-              <T style={{ fontWeight: '600' }}>{item.name}</T>
-              <T variant="caption">
-                {item.primaryMuscles.map(titleCase).join(', ')} · {LOG_TYPE_LABELS[item.logType]}
-                {item.isCustom ? ' · Custom' : ''}
-              </T>
-            </Pressable>
-          </Link>
+          <Pressable
+            onPress={() => router.push({ pathname: '/exercises/[id]', params: { id: item.id } })}
+            style={({ pressed }) => ({
+              backgroundColor: p.surface,
+              borderRadius: Radius.md,
+              padding: Spacing.md,
+              opacity: pressed ? 0.7 : 1,
+              gap: 2,
+            })}>
+            <T style={{ fontWeight: '600' }}>{item.name}</T>
+            <T variant="caption">
+              {item.primaryMuscles.map(titleCase).join(', ')} · {LOG_TYPE_LABELS[item.logType]}
+              {item.isCustom ? ' · Custom' : ''}
+            </T>
+          </Pressable>
         )}
       />
     </Screen>

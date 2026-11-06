@@ -14,6 +14,7 @@ import { useNow } from '@/hooks/use-now';
 import { usePalette } from '@/hooks/use-palette';
 import { useQuery } from '@/hooks/use-query';
 import { useSettings } from '@/hooks/use-settings';
+import { previousBestScore } from '@/repo/history';
 import { confirm } from '@/lib/confirm';
 import {
   deleteSet,
@@ -39,7 +40,10 @@ export default function SessionScreen() {
     const detail = await getSessionDetail(db, id);
     if (!detail) return null;
     const last = await Promise.all(detail.exercises.map((e) => lastPerformance(db, e.exercise.id, id)));
-    return { detail, last };
+    const bests = await Promise.all(
+      detail.exercises.map((e) => previousBestScore(db, e.exercise.id, e.exercise.logType, id)),
+    );
+    return { detail, last, bests };
   }, id);
 
   if (data === undefined) return <Screen />;
@@ -50,7 +54,7 @@ export default function SessionScreen() {
       </Screen>
     );
 
-  const { detail, last } = data;
+  const { detail, last, bests } = data;
   const exercises = detail.exercises;
   const mutate = (fn: () => Promise<unknown>) =>
     fn()
@@ -115,6 +119,7 @@ export default function SessionScreen() {
                 key={e.id}
                 item={e}
                 last={last[i]}
+                previousBest={bests[i]}
                 unit={settings.weightUnit}
                 isFirst={i === 0}
                 isLast={i === exercises.length - 1}

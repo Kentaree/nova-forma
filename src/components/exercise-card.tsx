@@ -3,6 +3,7 @@ import { Alert, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Radius, Spacing } from '@/constants/theme';
 import { formatSet } from '@/domain/format';
 import { suggestNextSet } from '@/domain/prefill';
+import { prSetIds } from '@/domain/records';
 import type { LoggedSet, SetType, SetValues, WeightUnit } from '@/domain/types';
 import { usePalette } from '@/hooks/use-palette';
 import { confirm } from '@/lib/confirm';
@@ -25,6 +26,7 @@ export interface ExerciseCardActions {
 export function ExerciseCard({
   item,
   last,
+  previousBest,
   unit,
   isFirst,
   isLast,
@@ -33,6 +35,7 @@ export function ExerciseCard({
 }: {
   item: SessionExercise;
   last: { date: string; sets: LoggedSet[] } | null;
+  previousBest: number | null;
   unit: WeightUnit;
   isFirst: boolean;
   isLast: boolean;
@@ -80,6 +83,7 @@ export function ExerciseCard({
     ]);
   }
 
+  const prs = prSetIds(exercise.logType, sets, previousBest);
   const initial = suggestNextSet(exercise.logType, sets, last?.sets ?? []);
   let working = 0;
 
@@ -117,6 +121,11 @@ export function ExerciseCard({
               {s.setType === 'warmup' ? 'W' : working}
             </Text>
             <Text style={[styles.setValue, { color: p.text }]}>{formatSet(exercise.logType, s, unit)}</Text>
+            {prs.has(s.id) && (
+              <Text style={[styles.pr, { color: p.onAccent, backgroundColor: p.accent }]} accessibilityLabel="Personal record">
+                PR
+              </Text>
+            )}
             {s.setType === 'failure' && <Text style={{ color: p.danger, fontWeight: '700' }}>{SET_TYPE_LABEL.failure}</Text>}
           </Pressable>
         );
@@ -138,5 +147,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
   setIndex: { width: 20, fontWeight: '800', fontSize: 15 },
+  pr: { fontSize: 12, fontWeight: '800', borderRadius: 4, overflow: 'hidden', paddingHorizontal: 6, paddingVertical: 2 },
   setValue: { flex: 1, fontSize: 17, fontWeight: '600', fontVariant: ['tabular-nums'] },
 });
