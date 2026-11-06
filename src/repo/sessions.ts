@@ -1,6 +1,15 @@
 import type { Db } from '@/db/types';
 import type { Exercise, LoggedSet, SetType, SetValues } from '@/domain/types';
 
+import {
+  dissolveLoneGroups,
+  moveItem,
+  nextPosition,
+  parentOf,
+  renumber,
+  SESSION_LIST,
+  toggleSupersetWithNext as toggleSuperset,
+} from './exercise-list';
 import { getExercise } from './exercises';
 
 export interface Session {
@@ -17,7 +26,20 @@ export interface SessionExercise {
   exercise: Exercise;
   position: number;
   supersetGroup: number | null;
+  target: Target | null;
   sets: LoggedSet[];
+}
+
+/** What a template asked for: e.g. 3 sets of 8–10. */
+export interface Target {
+  sets: number | null;
+  repsMin: number | null;
+  repsMax: number | null;
+}
+
+export function toTarget(r: { target_sets: number | null; target_reps_min: number | null; target_reps_max: number | null }): Target | null {
+  if (r.target_sets == null && r.target_reps_min == null && r.target_reps_max == null) return null;
+  return { sets: r.target_sets, repsMin: r.target_reps_min, repsMax: r.target_reps_max };
 }
 
 export interface SessionDetail extends Session {
@@ -104,8 +126,17 @@ export async function getActiveSession(db: Db): Promise<Session | null> {
 export async function getSessionDetail(db: Db, id: string): Promise<SessionDetail | null> {
   const session = await getSession(db, id);
   if (!session) return null;
-  const rows = await db.all<{ id: string; exercise_id: string; position: number; superset_group: number | null }>(
-    'SELECT id, exercise_id, position, superset_group FROM session_exercises WHERE session_id = ? ORDER BY position',
+  const rows = await db.all<{
+    id: string;
+    exercise_id: string;
+    position: number;
+    superset_group: number | null;
+    target_sets: number | null;
+    target_reps_min: number | null;
+    target_reps_max: number | null;
+  }>(
+    `SELECT id, exercise_id, position, superset_group, target_sets, target_reps_min, target_reps_max
+     FROM session_exercises WHERE session_id = ? ORDER BY position`,
     [id],
   );
   const sets = await db.all<SetRow>(
@@ -122,6 +153,7 @@ export async function getSessionDetail(db: Db, id: string): Promise<SessionDetai
       exercise,
       position: r.position,
       supersetGroup: r.superset_group,
+      target: toTarget(r),
       sets: sets.filter((s) => s.session_exercise_id === r.id).map(toSet),
     });
   }
@@ -129,113 +161,34 @@ export async function getSessionDetail(db: Db, id: string): Promise<SessionDetai
 }
 
 export async function addExerciseToSession(db: Db, sessionId: string, exerciseId: string, id: string): Promise<void> {
-  const { next } = (await db.first<{ next: number }>(
-    'SELECT COALESCE(MAX(position) + 1, 0) AS next FROM session_exercises WHERE session_id = ?',
-    [sessionId],
-  ))!;
+  const position = await nextPosition(db, SESSION_LIST, sessionId);
   await db.run(`INSERT INTO session_exercises (id, session_id, exercise_id, position) VALUES (?, ?, ?, ?)`, [
     id,
     sessionId,
     exerciseId,
-    next,
+    position,
   ]);
 }
 
 export async function removeSessionExercise(db: Db, sessionExerciseId: string): Promise<void> {
-  const row = await db.first<{ session_id: string }>('SELECT session_id FROM session_exercises WHERE id = ?', [
-    sessionExerciseId,
-  ]);
-  if (!row) return;
+  const sessionId = await parentOf(db, SESSION_LIST, sessionExerciseId);
+  if (!sessionId) return;
   await db.transaction(async () => {
     await db.run('DELETE FROM sets WHERE session_exercise_id = ?', [sessionExerciseId]);
     await db.run('DELETE FROM session_exercises WHERE id = ?', [sessionExerciseId]);
-    await renumber(db, row.session_id);
-    await dissolveLoneGroups(db, row.session_id);
+    await renumber(db, SESSION_LIST, sessionId);
+    await dissolveLoneGroups(db, SESSION_LIST, sessionId);
   });
 }
 
 /** Moves an exercise one place up (-1) or down (+1). */
-export async function moveSessionExercise(db: Db, sessionExerciseId: string, direction: -1 | 1): Promise<void> {
-  const row = await db.first<{ session_id: string; position: number }>(
-    'SELECT session_id, position FROM session_exercises WHERE id = ?',
-    [sessionExerciseId],
-  );
-  if (!row) return;
-  const other = await db.first<{ id: string }>(
-    'SELECT id FROM session_exercises WHERE session_id = ? AND position = ?',
-    [row.session_id, row.position + direction],
-  );
-  if (!other) return;
-  await db.transaction(async () => {
-    await db.run('UPDATE session_exercises SET position = ? WHERE id = ?', [row.position, other.id]);
-    await db.run('UPDATE session_exercises SET position = ? WHERE id = ?', [row.position + direction, sessionExerciseId]);
-  });
+export function moveSessionExercise(db: Db, sessionExerciseId: string, direction: -1 | 1): Promise<void> {
+  return moveItem(db, SESSION_LIST, sessionExerciseId, direction);
 }
 
-/**
- * Toggles a superset link between this exercise and the next one. Linking joins the next
- * exercise (and its group, if any) into this one's group; unlinking splits the group here.
- */
-export async function toggleSupersetWithNext(db: Db, sessionExerciseId: string): Promise<void> {
-  const rows = await db.all<{ id: string; superset_group: number | null; session_id: string }>(
-    `SELECT id, superset_group, session_id FROM session_exercises
-     WHERE session_id = (SELECT session_id FROM session_exercises WHERE id = ?) ORDER BY position`,
-    [sessionExerciseId],
-  );
-  const i = rows.findIndex((r) => r.id === sessionExerciseId);
-  const cur = rows[i];
-  const next = rows[i + 1];
-  if (!cur || !next) return;
-
-  await db.transaction(async () => {
-    const linked = cur.superset_group != null && cur.superset_group === next.superset_group;
-    if (linked) {
-      // Split: everything after `cur` in this group gets a fresh group.
-      const fresh = await nextGroup(db, cur.session_id);
-      for (const r of rows.slice(i + 1)) {
-        if (r.superset_group !== cur.superset_group) break;
-        await db.run('UPDATE session_exercises SET superset_group = ? WHERE id = ?', [fresh, r.id]);
-      }
-    } else {
-      const group = cur.superset_group ?? (await nextGroup(db, cur.session_id));
-      await db.run('UPDATE session_exercises SET superset_group = ? WHERE id = ?', [group, cur.id]);
-      const absorb = next.superset_group;
-      for (const r of rows.slice(i + 1)) {
-        if (r.id !== next.id && (absorb == null || r.superset_group !== absorb)) break;
-        await db.run('UPDATE session_exercises SET superset_group = ? WHERE id = ?', [group, r.id]);
-      }
-    }
-    await dissolveLoneGroups(db, cur.session_id);
-  });
-}
-
-async function nextGroup(db: Db, sessionId: string): Promise<number> {
-  const { g } = (await db.first<{ g: number }>(
-    'SELECT COALESCE(MAX(superset_group), 0) + 1 AS g FROM session_exercises WHERE session_id = ?',
-    [sessionId],
-  ))!;
-  return g;
-}
-
-async function renumber(db: Db, sessionId: string): Promise<void> {
-  const rows = await db.all<{ id: string }>(
-    'SELECT id FROM session_exercises WHERE session_id = ? ORDER BY position',
-    [sessionId],
-  );
-  for (let i = 0; i < rows.length; i++) {
-    await db.run('UPDATE session_exercises SET position = ? WHERE id = ?', [i, rows[i].id]);
-  }
-}
-
-/** A "superset" of one exercise isn't one. */
-async function dissolveLoneGroups(db: Db, sessionId: string): Promise<void> {
-  await db.run(
-    `UPDATE session_exercises SET superset_group = NULL
-     WHERE session_id = ? AND superset_group IN (
-       SELECT superset_group FROM session_exercises WHERE session_id = ? AND superset_group IS NOT NULL
-       GROUP BY superset_group HAVING COUNT(*) < 2)`,
-    [sessionId, sessionId],
-  );
+/** Toggles a superset link between this exercise and the next one. */
+export function toggleSupersetWithNext(db: Db, sessionExerciseId: string): Promise<void> {
+  return toggleSuperset(db, SESSION_LIST, sessionExerciseId);
 }
 
 export async function logSet(
@@ -319,8 +272,8 @@ export async function finishSession(db: Db, id: string, now = new Date()): Promi
       await db.run('DELETE FROM sessions WHERE id = ?', [id]);
       kept = false;
     } else {
-      await renumber(db, id);
-      await dissolveLoneGroups(db, id);
+      await renumber(db, SESSION_LIST, id);
+      await dissolveLoneGroups(db, SESSION_LIST, id);
       await db.run('UPDATE sessions SET ended_at = ? WHERE id = ?', [now.toISOString(), id]);
     }
   });

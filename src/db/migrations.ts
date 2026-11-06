@@ -92,6 +92,12 @@ export const migrations: string[] = [
     value TEXT NOT NULL
   );
   `,
+  // 2: a workout started from a template remembers each exercise's targets.
+  `
+  ALTER TABLE session_exercises ADD COLUMN target_sets INTEGER;
+  ALTER TABLE session_exercises ADD COLUMN target_reps_min INTEGER;
+  ALTER TABLE session_exercises ADD COLUMN target_reps_max INTEGER;
+  `,
 ];
 
 export async function migrate(db: Db): Promise<void> {

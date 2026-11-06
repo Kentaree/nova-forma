@@ -1,3 +1,4 @@
+import { formatTarget } from '@/domain/target';
 import { formatDuration, formatSet, parseDuration } from '@/domain/format';
 import { adjustRest, remainingSeconds, shouldRestAfter, startRest } from '@/domain/rest-timer';
 import { toKg } from '@/domain/units';
@@ -47,5 +48,14 @@ describe('parseDuration', () => {
     expect(parseDuration('1:02:05')).toBe(3725);
     expect(parseDuration('abc')).toBeNull();
     expect(parseDuration('')).toBeNull();
+  });
+});
+
+describe('formatTarget', () => {
+  it('formats targets', () => {
+    expect(formatTarget({ sets: 3, repsMin: 8, repsMax: 12 })).toBe('3 × 8–12');
+    expect(formatTarget({ sets: 5, repsMin: 5, repsMax: 5 })).toBe('5 × 5');
+    expect(formatTarget({ sets: 3, repsMin: null, repsMax: null })).toBe('3 sets');
+    expect(formatTarget(null)).toBeNull();
   });
 });

@@ -4,9 +4,11 @@ import { Radius, Spacing } from '@/constants/theme';
 import { formatSet } from '@/domain/format';
 import { suggestNextSet } from '@/domain/prefill';
 import { prSetIds } from '@/domain/records';
+import { formatTarget } from '@/domain/target';
 import type { LoggedSet, SetType, SetValues, WeightUnit } from '@/domain/types';
 import { usePalette } from '@/hooks/use-palette';
 import { confirm } from '@/lib/confirm';
+import { showItemMenu } from '@/lib/item-menu';
 import type { SessionExercise } from '@/repo/sessions';
 
 import { SetEntry } from './set-entry';
@@ -47,18 +49,13 @@ export function ExerciseCard({
   const grouped = item.supersetGroup != null;
 
   function menu() {
-    const buttons: { text: string; onPress?: () => void; style?: 'destructive' | 'cancel' }[] = [];
-    if (!isFirst) buttons.push({ text: 'Move up', onPress: () => actions.onMove(-1) });
-    if (!isLast) buttons.push({ text: 'Move down', onPress: () => actions.onMove(1) });
-    if (!isLast)
-      buttons.push({
-        text: linkedToNext ? 'Unlink superset from next' : 'Superset with next',
-        onPress: actions.onToggleSuperset,
-      });
-    buttons.push({
-      text: 'Remove exercise',
-      style: 'destructive',
-      onPress: async () => {
+    showItemMenu(exercise.name, {
+      isFirst,
+      isLast,
+      linkedToNext,
+      onMove: actions.onMove,
+      onToggleSuperset: actions.onToggleSuperset,
+      onRemove: async () => {
         if (
           !sets.length ||
           (await confirm(`Remove ${exercise.name}?`, `This deletes the ${sets.length} logged set(s).`, {
@@ -69,8 +66,6 @@ export function ExerciseCard({
           actions.onRemove();
       },
     });
-    buttons.push({ text: 'Cancel', style: 'cancel' });
-    Alert.alert(exercise.name, undefined, buttons);
   }
 
   function setMenu(s: LoggedSet) {
@@ -83,6 +78,8 @@ export function ExerciseCard({
     ]);
   }
 
+  const target = formatTarget(item.target);
+  const workingDone = sets.filter((s) => s.setType !== 'warmup').length;
   const prs = prSetIds(exercise.logType, sets, previousBest);
   const initial = suggestNextSet(exercise.logType, sets, last?.sets ?? []);
   let working = 0;
@@ -99,6 +96,11 @@ export function ExerciseCard({
         <View style={{ flex: 1 }}>
           {grouped && <T variant="caption" style={{ color: p.accent, fontWeight: '700' }}>SUPERSET</T>}
           <T variant="heading">{exercise.name}</T>
+          {target && (
+            <T variant="caption" style={{ color: p.text, fontWeight: '600' }}>
+              Target {target} · {workingDone}/{item.target?.sets ?? '–'} sets done
+            </T>
+          )}
           <T variant="caption">
             {last
               ? `Last time (${new Date(last.date).toLocaleDateString(undefined, { day: 'numeric', month: 'short' })}): ${last.sets

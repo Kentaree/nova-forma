@@ -1,7 +1,8 @@
+import { randomUUID } from 'expo-crypto';
 import { router, Stack, useLocalSearchParams } from 'expo-router';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 
-import { Card, Screen, T } from '@/components/ui';
+import { Button, Card, Screen, T } from '@/components/ui';
 import { Spacing } from '@/constants/theme';
 import { formatSet } from '@/domain/format';
 import { useDb } from '@/hooks/use-db';
@@ -11,6 +12,7 @@ import { useSettings } from '@/hooks/use-settings';
 import { confirm } from '@/lib/confirm';
 import { formatDay, minutesBetween } from '@/lib/dates';
 import { discardSession, getSessionDetail } from '@/repo/sessions';
+import { saveSessionAsTemplate } from '@/repo/templates';
 
 export default function HistoryDetail() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -32,6 +34,12 @@ export default function HistoryDetail() {
       await discardSession(db, id);
       router.back();
     }
+  }
+
+  async function saveAsTemplate() {
+    const templateId = randomUUID();
+    await saveSessionAsTemplate(db, id, templateId, () => randomUUID());
+    router.push({ pathname: '/template/[id]', params: { id: templateId } });
   }
 
   return (
@@ -62,6 +70,7 @@ export default function HistoryDetail() {
             </Card>
           );
         })}
+        <Button kind="secondary" label="Save as template" onPress={saveAsTemplate} />
         <View style={{ alignItems: 'center', marginTop: Spacing.lg }}>
           <Pressable onPress={remove} hitSlop={12}>
             <Text style={{ color: p.danger, fontSize: 15 }}>Delete workout</Text>
