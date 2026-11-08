@@ -8,6 +8,7 @@ import { RestTimerProvider } from '@/components/rest-timer';
 import { Colors } from '@/constants/theme';
 import { fromExpo } from '@/db/expo';
 import { initDatabase } from '@/db/init';
+import { SyncProvider } from '@/sync/sync-provider';
 
 export const DATABASE_NAME = 'nova-forma.db';
 
@@ -34,6 +35,7 @@ export default function RootLayout() {
           </View>
         }>
         <SQLiteProvider databaseName={DATABASE_NAME} onInit={onInit} useSuspense>
+          <SyncProvider>
           <RestTimerProvider>
             <Stack>
               <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
@@ -46,6 +48,7 @@ export default function RootLayout() {
               <Stack.Screen name="template/[id]/add" options={{ title: 'Add exercise', presentation: 'modal' }} />
             </Stack>
           </RestTimerProvider>
+          </SyncProvider>
         </SQLiteProvider>
       </Suspense>
     </ThemeProvider>

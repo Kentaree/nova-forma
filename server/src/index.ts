@@ -1,5 +1,5 @@
 import { createApp, type AppEnv } from './app';
-import { d1Store } from './store';
+import { d1Store } from './d1-store';
 
 export interface Env extends AppEnv {
   DB: D1Database;

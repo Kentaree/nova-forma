@@ -35,7 +35,10 @@ src/
   domain/       pure logic: types, units, 1RM, records, set pre-fill, rest timer, formatting
   repo/         data access, written against the Db interface
   lib/          platform glue: rest-over notifications, confirm prompts, CSV export
+  sync/         sync with the server: change tracking, push/pull engine, settings, background provider
   test/         node:sqlite Db for tests
+server/         Cloudflare Worker sync server (separate package, see server/README.md)
+shared/         sync wire format used by both app and server
 scripts/
   port-smart-fitness-seed.js   regenerates src/data/exercises.json from the old smart-fitness seed
 ```
@@ -43,6 +46,7 @@ scripts/
 ### Data rules
 
 - Weights are stored in kg; the display unit is a setting.
-- IDs are UUIDs, so rows can sync to a backend later without clashes.
+- IDs are UUIDs, so rows from different phones never clash.
+- Sync change tracking is done by SQLite triggers (migration 3): any change to a custom exercise, template or finished workout bumps `updated_at` and lands in `sync_dirty`. Repositories don't need to know about sync, but a new synced table needs triggers too.
 - Schema changes go in a **new** entry in `src/db/migrations.ts`; never edit one that has shipped.
 - Editing `src/data/exercises.json` requires bumping `LIBRARY_VERSION` in `src/db/seed.ts`.

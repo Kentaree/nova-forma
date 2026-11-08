@@ -124,6 +124,16 @@ describe('auth', () => {
     const res = await app.request('/v1/sync', { method: 'POST', headers: { authorization: 'Bearer x' } }, {});
     expect(res.status).toBe(500);
   });
+
+  it('answers CORS preflight without a token', async () => {
+    const res = await app.request(
+      '/v1/sync',
+      { method: 'OPTIONS', headers: { origin: 'http://localhost:8081', 'access-control-request-method': 'POST' } },
+      { SYNC_TOKEN: TOKEN },
+    );
+    expect(res.status).toBe(204);
+    expect(res.headers.get('access-control-allow-origin')).toBe('*');
+  });
 });
 
 describe('validation', () => {

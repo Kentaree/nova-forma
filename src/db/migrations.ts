@@ -98,6 +98,127 @@ export const migrations: string[] = [
   ALTER TABLE session_exercises ADD COLUMN target_reps_min INTEGER;
   ALTER TABLE session_exercises ADD COLUMN target_reps_max INTEGER;
   `,
+  // 3: sync. Triggers keep updated_at current and record what changed in sync_dirty,
+  // so the repositories don't need to know about sync. While pulled changes are being
+  // applied, sync_state.applying = 1 switches the triggers off.
+  `
+  ALTER TABLE sessions ADD COLUMN updated_at TEXT;
+  UPDATE sessions SET updated_at = COALESCE(ended_at, started_at);
+
+  CREATE TABLE sync_state (
+    id INTEGER PRIMARY KEY NOT NULL CHECK (id = 1),
+    applying INTEGER NOT NULL DEFAULT 0,
+    cursor INTEGER NOT NULL DEFAULT 0,
+    last_synced_at TEXT
+  );
+  INSERT INTO sync_state (id) VALUES (1);
+
+  -- Documents changed since they were last pushed. rev increases on every change, so a
+  -- push only clears the entry if nothing changed while it was in flight.
+  CREATE TABLE sync_dirty (
+    kind TEXT NOT NULL CHECK (kind IN ('exercise', 'template', 'session')),
+    id TEXT NOT NULL,
+    rev INTEGER NOT NULL DEFAULT 1,
+    PRIMARY KEY (kind, id)
+  );
+
+  -- Finished workouts deleted on this phone, kept until the deletion has been pushed.
+  CREATE TABLE sync_tombstones (
+    id TEXT PRIMARY KEY NOT NULL,
+    template_id TEXT,
+    name TEXT NOT NULL,
+    started_at TEXT NOT NULL,
+    deleted_at TEXT NOT NULL
+  );
+
+  INSERT INTO sync_dirty (kind, id) SELECT 'exercise', id FROM exercises WHERE is_custom = 1;
+  INSERT INTO sync_dirty (kind, id) SELECT 'template', id FROM templates;
+  INSERT INTO sync_dirty (kind, id) SELECT 'session', id FROM sessions WHERE ended_at IS NOT NULL;
+
+  -- Custom exercises
+  CREATE TRIGGER sync_exercise_ins AFTER INSERT ON exercises
+  WHEN NEW.is_custom = 1 AND (SELECT applying FROM sync_state) = 0 BEGIN
+    INSERT INTO sync_dirty (kind, id) VALUES ('exercise', NEW.id) ON CONFLICT (kind, id) DO UPDATE SET rev = rev + 1;
+  END;
+  CREATE TRIGGER sync_exercise_upd AFTER UPDATE ON exercises
+  WHEN NEW.is_custom = 1 AND (SELECT applying FROM sync_state) = 0 BEGIN
+    INSERT INTO sync_dirty (kind, id) VALUES ('exercise', NEW.id) ON CONFLICT (kind, id) DO UPDATE SET rev = rev + 1;
+  END;
+
+  -- Templates: any change to a template or its exercises bumps updated_at and marks it dirty.
+  CREATE TRIGGER sync_template_touch AFTER UPDATE OF name, notes, deleted_at ON templates
+  WHEN NEW.updated_at IS OLD.updated_at AND (SELECT applying FROM sync_state) = 0 BEGIN
+    UPDATE templates SET updated_at = strftime('%Y-%m-%dT%H:%M:%fZ', 'now') WHERE id = NEW.id;
+  END;
+  CREATE TRIGGER sync_template_ins AFTER INSERT ON templates
+  WHEN (SELECT applying FROM sync_state) = 0 BEGIN
+    INSERT INTO sync_dirty (kind, id) VALUES ('template', NEW.id) ON CONFLICT (kind, id) DO UPDATE SET rev = rev + 1;
+  END;
+  CREATE TRIGGER sync_template_upd AFTER UPDATE ON templates
+  WHEN (SELECT applying FROM sync_state) = 0 BEGIN
+    INSERT INTO sync_dirty (kind, id) VALUES ('template', NEW.id) ON CONFLICT (kind, id) DO UPDATE SET rev = rev + 1;
+  END;
+  CREATE TRIGGER sync_template_item_ins AFTER INSERT ON template_exercises
+  WHEN (SELECT applying FROM sync_state) = 0 BEGIN
+    UPDATE templates SET updated_at = strftime('%Y-%m-%dT%H:%M:%fZ', 'now') WHERE id = NEW.template_id;
+  END;
+  CREATE TRIGGER sync_template_item_upd AFTER UPDATE ON template_exercises
+  WHEN (SELECT applying FROM sync_state) = 0 BEGIN
+    UPDATE templates SET updated_at = strftime('%Y-%m-%dT%H:%M:%fZ', 'now') WHERE id = NEW.template_id;
+  END;
+  CREATE TRIGGER sync_template_item_del AFTER DELETE ON template_exercises
+  WHEN (SELECT applying FROM sync_state) = 0 BEGIN
+    UPDATE templates SET updated_at = strftime('%Y-%m-%dT%H:%M:%fZ', 'now') WHERE id = OLD.template_id;
+  END;
+
+  -- Sessions: only finished workouts sync. Changes to a session, its exercises or its
+  -- sets bump updated_at; a finished one is marked dirty, and deleting one leaves a tombstone.
+  CREATE TRIGGER sync_session_stamp AFTER INSERT ON sessions
+  WHEN NEW.updated_at IS NULL BEGIN
+    UPDATE sessions SET updated_at = strftime('%Y-%m-%dT%H:%M:%fZ', 'now') WHERE id = NEW.id;
+  END;
+  CREATE TRIGGER sync_session_touch AFTER UPDATE OF template_id, name, started_at, ended_at, notes ON sessions
+  WHEN NEW.updated_at IS OLD.updated_at AND (SELECT applying FROM sync_state) = 0 BEGIN
+    UPDATE sessions SET updated_at = strftime('%Y-%m-%dT%H:%M:%fZ', 'now') WHERE id = NEW.id;
+  END;
+  CREATE TRIGGER sync_session_upd AFTER UPDATE ON sessions
+  WHEN NEW.ended_at IS NOT NULL AND (SELECT applying FROM sync_state) = 0 BEGIN
+    INSERT INTO sync_dirty (kind, id) VALUES ('session', NEW.id) ON CONFLICT (kind, id) DO UPDATE SET rev = rev + 1;
+  END;
+  CREATE TRIGGER sync_session_del AFTER DELETE ON sessions
+  WHEN OLD.ended_at IS NOT NULL AND (SELECT applying FROM sync_state) = 0 BEGIN
+    INSERT OR REPLACE INTO sync_tombstones (id, template_id, name, started_at, deleted_at)
+      VALUES (OLD.id, OLD.template_id, OLD.name, OLD.started_at, strftime('%Y-%m-%dT%H:%M:%fZ', 'now'));
+    INSERT INTO sync_dirty (kind, id) VALUES ('session', OLD.id) ON CONFLICT (kind, id) DO UPDATE SET rev = rev + 1;
+  END;
+  CREATE TRIGGER sync_session_item_ins AFTER INSERT ON session_exercises
+  WHEN (SELECT applying FROM sync_state) = 0 BEGIN
+    UPDATE sessions SET updated_at = strftime('%Y-%m-%dT%H:%M:%fZ', 'now') WHERE id = NEW.session_id;
+  END;
+  CREATE TRIGGER sync_session_item_upd AFTER UPDATE ON session_exercises
+  WHEN (SELECT applying FROM sync_state) = 0 BEGIN
+    UPDATE sessions SET updated_at = strftime('%Y-%m-%dT%H:%M:%fZ', 'now') WHERE id = NEW.session_id;
+  END;
+  CREATE TRIGGER sync_session_item_del AFTER DELETE ON session_exercises
+  WHEN (SELECT applying FROM sync_state) = 0 BEGIN
+    UPDATE sessions SET updated_at = strftime('%Y-%m-%dT%H:%M:%fZ', 'now') WHERE id = OLD.session_id;
+  END;
+  CREATE TRIGGER sync_set_ins AFTER INSERT ON sets
+  WHEN (SELECT applying FROM sync_state) = 0 BEGIN
+    UPDATE sessions SET updated_at = strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
+      WHERE id = (SELECT session_id FROM session_exercises WHERE id = NEW.session_exercise_id);
+  END;
+  CREATE TRIGGER sync_set_upd AFTER UPDATE ON sets
+  WHEN (SELECT applying FROM sync_state) = 0 BEGIN
+    UPDATE sessions SET updated_at = strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
+      WHERE id = (SELECT session_id FROM session_exercises WHERE id = NEW.session_exercise_id);
+  END;
+  CREATE TRIGGER sync_set_del AFTER DELETE ON sets
+  WHEN (SELECT applying FROM sync_state) = 0 BEGIN
+    UPDATE sessions SET updated_at = strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
+      WHERE id = (SELECT session_id FROM session_exercises WHERE id = OLD.session_exercise_id);
+  END;
+  `,
 ];
 
 export async function migrate(db: Db): Promise<void> {

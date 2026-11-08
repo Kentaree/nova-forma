@@ -16,6 +16,7 @@ import { useQuery } from '@/hooks/use-query';
 import { useSettings } from '@/hooks/use-settings';
 import { previousBestScore } from '@/repo/history';
 import { confirm } from '@/lib/confirm';
+import { useSync } from '@/sync/sync-provider';
 import {
   deleteSet,
   discardSession,
@@ -32,6 +33,7 @@ import {
 export default function SessionScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const db = useDb();
+  const sync = useSync();
   const p = usePalette();
   const settings = useSettings();
   const rest = useRestTimer();
@@ -71,6 +73,7 @@ export default function SessionScreen() {
     if (!ok) return;
     rest.stop();
     await finishSession(db, id);
+    sync.requestSync();
     router.back();
   }
 
