@@ -37,7 +37,7 @@ src/
   lib/          platform glue: rest-over notifications, confirm prompts, CSV export
   sync/         sync with the server: change tracking, push/pull engine, settings, background provider
   test/         node:sqlite Db for tests
-server/         Cloudflare Worker sync server (separate package, see server/README.md)
+server/         Cloudflare Worker: sync API and MCP server (separate package, see server/README.md)
 shared/         sync wire format used by both app and server
 scripts/
   port-smart-fitness-seed.js   regenerates src/data/exercises.json from the old smart-fitness seed

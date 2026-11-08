@@ -1,6 +1,7 @@
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 
+import { safeEqual } from './auth';
 import { applyChanges, changesSince } from './sync';
 import type { Store } from './store';
 import { syncRequest } from './validate';
@@ -8,15 +9,6 @@ import { syncRequest } from './validate';
 export interface AppEnv {
   /** Bearer token the app must send. Set with `wrangler secret put SYNC_TOKEN`. */
   SYNC_TOKEN?: string;
-}
-
-/** Constant-time string comparison, so the token can't be guessed byte by byte from timings. */
-function safeEqual(a: string, b: string): boolean {
-  const ea = new TextEncoder().encode(a);
-  const eb = new TextEncoder().encode(b);
-  let diff = ea.length ^ eb.length;
-  for (let i = 0; i < Math.max(ea.length, eb.length); i++) diff |= (ea[i] ?? 0) ^ (eb[i] ?? 0);
-  return diff === 0;
 }
 
 /** Builds the HTTP app. `getStore` is injected so tests can run against a local SQLite. */
