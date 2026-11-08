@@ -66,6 +66,7 @@ export default function TemplateEditor() {
           accessibilityLabel="Template name"
           style={{ color: p.text, fontSize: 28, fontWeight: '800', paddingVertical: Spacing.xs }}
         />
+        {t.notes && <T variant="secondary">{t.notes}</T>}
         {t.exercises.length > 0 && <Button label="Start workout" onPress={start} />}
         {t.exercises.length === 0 && <T variant="secondary">Add the exercises you want in this workout, with target sets and reps.</T>}
         {t.exercises.map((e, i) => (
@@ -140,10 +141,18 @@ function TemplateCard({
         </Pressable>
       </View>
       <View style={{ flexDirection: 'row', gap: Spacing.sm }}>
-        <Stepper label="SETS" value={target.sets ?? 0} step={1} keyboardType="number-pad" onChange={(sets) => onTarget({ ...target, sets: sets || null })} />
+        <Stepper
+          compact
+          label="SETS"
+          value={target.sets ?? 0}
+          step={1}
+          keyboardType="number-pad"
+          onChange={(sets) => onTarget({ ...target, sets: sets || null })}
+        />
         {usesReps && (
           <>
             <Stepper
+              compact
               label="REPS FROM"
               value={target.repsMin ?? 0}
               step={1}
@@ -153,6 +162,7 @@ function TemplateCard({
               }
             />
             <Stepper
+              compact
               label="TO"
               value={target.repsMax ?? 0}
               min={target.repsMin ?? 0}

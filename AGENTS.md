@@ -49,4 +49,4 @@ Docs: https://docs.expo.dev/eas/index.md
 
 ## Sync server
 
-`server/` is a separate Cloudflare Worker package with its own `package.json` (see `server/README.md`). It's excluded from the app's tsconfig, eslint and jest; run `npm test` and `npm run typecheck` inside `server/`. The wire format both sides use is `shared/sync-protocol.ts`.
+`server/` is a separate Cloudflare Worker package (sync API + MCP server for chat apps) with its own `package.json` (see `server/README.md`). It's excluded from the app's tsconfig, eslint and jest; run `npm test` and `npm run typecheck` inside `server/`. The wire format both sides use is `shared/sync-protocol.ts`.

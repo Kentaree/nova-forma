@@ -17,6 +17,7 @@ export function Stepper({
   format = (v) => String(v),
   parse = (t) => (t.trim() === '' || isNaN(Number(t)) ? null : Number(t)),
   keyboardType = 'decimal-pad',
+  compact = false,
 }: {
   label: string;
   value: number;
@@ -26,6 +27,8 @@ export function Stepper({
   format?: (v: number) => string;
   parse?: (text: string) => number | null;
   keyboardType?: 'decimal-pad' | 'number-pad' | 'numbers-and-punctuation';
+  /** Narrower buttons, for three steppers side by side. */
+  compact?: boolean;
 }) {
   const p = usePalette();
   const [draft, setDraft] = useState<string | null>(null);
@@ -46,7 +49,7 @@ export function Stepper({
         <Pressable
           accessibilityLabel={`Decrease ${label}`}
           onPress={() => bump(-step)}
-          style={({ pressed }) => [styles.btn, { opacity: pressed ? 0.5 : 1 }]}>
+          style={({ pressed }) => [styles.btn, compact && styles.btnCompact, { opacity: pressed ? 0.5 : 1 }]}>
           <Text style={[styles.btnText, { color: p.text }]}>−</Text>
         </Pressable>
         <TextInput
@@ -64,7 +67,7 @@ export function Stepper({
         <Pressable
           accessibilityLabel={`Increase ${label}`}
           onPress={() => bump(step)}
-          style={({ pressed }) => [styles.btn, { opacity: pressed ? 0.5 : 1 }]}>
+          style={({ pressed }) => [styles.btn, compact && styles.btnCompact, { opacity: pressed ? 0.5 : 1 }]}>
           <Text style={[styles.btnText, { color: p.text }]}>+</Text>
         </Pressable>
       </View>
@@ -75,6 +78,7 @@ export function Stepper({
 const styles = StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'center', borderRadius: Radius.md },
   btn: { width: 44, height: 48, alignItems: 'center', justifyContent: 'center' },
+  btnCompact: { width: 30 },
   btnText: { fontSize: 26, fontWeight: '500' },
   input: { flex: 1, minWidth: 0, textAlign: 'center', fontSize: 22, fontWeight: '700', paddingVertical: Spacing.sm, fontVariant: ['tabular-nums'] },
 });
