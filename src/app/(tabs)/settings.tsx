@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Alert, ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { SyncSettings } from '@/components/sync-settings';
 import { Button, Card, Screen, Segmented, T } from '@/components/ui';
 import { Spacing } from '@/constants/theme';
 import type { WeightUnit } from '@/domain/types';
@@ -66,11 +67,11 @@ export default function SettingsScreen() {
                   </View>
                 </View>
               </Card>
+              <SyncSettings />
               <Card>
                 <T variant="heading">Your data</T>
                 <T variant="secondary">
-                  Everything is stored on this phone. Export a CSV of all your workouts to keep a backup or open it
-                  in a spreadsheet.
+                  Export a CSV of all your workouts to keep your own copy or open it in a spreadsheet.
                 </T>
                 <Button
                   kind="secondary"
