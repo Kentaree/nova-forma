@@ -1,9 +1,11 @@
 import { useFocusEffect } from 'expo-router';
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 
+import { onDataChanged } from '@/lib/data-events';
+
 /**
  * Runs an async loader when the screen gains focus, when `key` changes, or when
- * `reload()` is called, so screens stay fresh after edits. Stale responses are dropped.
+ * `reload()` is called or a sync pulls new data, so screens stay fresh after edits. Stale responses are dropped.
  *
  * `key` must describe every input the loader depends on (e.g. `${search}|${muscle}`).
  * The loader itself may be a new function on every render; only `key` triggers re-runs.
@@ -36,6 +38,8 @@ export function useQuery<T>(load: () => Promise<T>, key = '') {
   useFocusEffect(reload);
   // ...and whenever the inputs change.
   useEffect(reload, [key, reload]);
+  // ...and when a sync brings in new data.
+  useEffect(() => onDataChanged(reload), [reload]);
 
   return { data, error, reload };
 }
