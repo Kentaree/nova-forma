@@ -12,7 +12,7 @@
       "binding": "DB",
       "database_name": "nova-forma",
       // Replace with the id printed by `npx wrangler d1 create nova-forma` (see README).
-      "database_id": "00000000-0000-0000-0000-000000000000",
+      "database_id": "44650cbf-6ebc-4b0a-b18d-fdbf8ebf8550",
       "migrations_dir": "migrations"
     }
   ],
@@ -21,7 +21,7 @@
     {
       "binding": "OAUTH_KV",
       // Replace with the id printed by `npx wrangler kv namespace create OAUTH_KV` (see README).
-      "id": "00000000000000000000000000000000"
+      "id": "c412c3e4ac284882875d2aaa2b1407e1"
     }
   ]
   // Secrets (set with `npx wrangler secret put <NAME>`, never committed):
